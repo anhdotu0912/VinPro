@@ -5,49 +5,71 @@ import { usePathname } from 'next/navigation';
 export default function PatientLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   
-  // Hide bottom nav on login or onboarding screens
   const isAuthScreen = pathname.includes('/login') || pathname.includes('/onboarding');
 
-  return (
-    <div className="mobile-app-container">
-      {/* Main Content Area */}
-      <main className="mobile-main">
-        {children}
-      </main>
+  if (isAuthScreen) {
+    return <>{children}</>;
+  }
 
-      {/* Bottom Navigation */}
-      {!isAuthScreen && (
-        <nav className="bottom-nav">
-          <Link href="/patient" className={`bottom-nav-item ${pathname === '/patient' ? 'active' : ''}`}>
-            <div className="bottom-nav-icon">🏠</div>
-            <span>Trang chủ</span>
+  return (
+    <div className="dashboard-layout">
+      {/* Sidebar */}
+      <aside className="sidebar">
+        <div style={{ marginBottom: '2rem' }}>
+          <h1 style={{ fontSize: '1.5rem', color: 'var(--primary-dark)' }}>NutriAgent</h1>
+          <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)' }}>Bệnh nhân</p>
+        </div>
+        
+        <nav className="sidebar-nav">
+          <Link 
+            href="/patient" 
+            className={`sidebar-link ${pathname === '/patient' ? 'active' : ''}`}
+          >
+            Trang chủ
           </Link>
-          <Link href="/patient/menus" className={`bottom-nav-item ${pathname.includes('/menus') ? 'active' : ''}`}>
-            <div className="bottom-nav-icon">🍽️</div>
-            <span>Thực đơn</span>
+          <Link 
+            href="/patient/log-meal" 
+            className={`sidebar-link ${pathname.includes('/log-meal') ? 'active' : ''}`}
+          >
+            Nhật ký Bữa ăn
           </Link>
-          <Link href="/patient/log-meal" className={`bottom-nav-item ${pathname.includes('/log-meal') ? 'active' : ''}`}>
-            <div className="bottom-nav-icon" style={{ 
-              background: 'var(--primary)', 
-              color: 'white', 
-              borderRadius: '50%', 
-              width: '40px', 
-              height: '40px',
-              marginTop: '-15px',
-              boxShadow: 'var(--shadow-md)'
-            }}>📷</div>
-            <span style={{ marginTop: '5px' }}>Log</span>
+          <Link 
+            href="/patient/menus" 
+            className={`sidebar-link ${pathname.includes('/menus') ? 'active' : ''}`}
+          >
+            Thực đơn của tôi
           </Link>
-          <Link href="/patient/chat" className={`bottom-nav-item ${pathname.includes('/chat') ? 'active' : ''}`}>
-            <div className="bottom-nav-icon">🤖</div>
-            <span>Trợ lý AI</span>
+          <Link 
+            href="/patient/chat" 
+            className={`sidebar-link ${pathname.includes('/chat') ? 'active' : ''}`}
+          >
+            Trợ lý AI
           </Link>
-          <Link href="/patient/alerts" className={`bottom-nav-item ${pathname.includes('/alerts') ? 'active' : ''}`}>
-            <div className="bottom-nav-icon">⚠️</div>
-            <span>Cảnh báo</span>
+          <Link 
+            href="/patient/alerts" 
+            className={`sidebar-link ${pathname.includes('/alerts') ? 'active' : ''}`}
+          >
+            Cảnh báo sức khỏe
           </Link>
         </nav>
-      )}
+        
+        <div style={{ marginTop: 'auto', paddingTop: '1rem', borderTop: '1px solid var(--glass-border)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: 'var(--primary-light)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary-dark)', fontWeight: 600 }}>
+              NA
+            </div>
+            <div>
+              <p style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--text-main)' }}>Nguyễn Văn A</p>
+              <Link href="/patient/login" style={{ fontSize: '0.75rem', color: 'var(--danger)' }}>Đăng xuất</Link>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      {/* Main Content Area */}
+      <main className="dashboard-main">
+        {children}
+      </main>
     </div>
   );
 }
