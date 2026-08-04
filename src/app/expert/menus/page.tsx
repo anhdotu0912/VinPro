@@ -11,7 +11,7 @@ export default function MenusPage() {
         <h2>Danh sách Thực đơn</h2>
         <div>
           <button className="btn btn-outline" style={{ marginRight: '1rem' }}>+ Tạo thủ công</button>
-          <button className="btn btn-primary">✨ Tạo bằng AI</button>
+          <button className="btn btn-primary">Tạo bằng AI</button>
         </div>
       </header>
 

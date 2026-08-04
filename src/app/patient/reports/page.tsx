@@ -8,7 +8,7 @@ export default function ReportsPage() {
   return (
     <div>
       <header style={{ marginBottom: '2rem' }}>
-        <h2>📈 Báo cáo Tuân thủ Dinh dưỡng</h2>
+        <h2>Báo cáo Tuân thủ Dinh dưỡng</h2>
         <p style={{ color: 'var(--text-muted)' }}>Theo dõi tiến độ sức khỏe của bạn trong 30 ngày qua</p>
       </header>
 
@@ -27,9 +27,9 @@ export default function ReportsPage() {
         </div>
       </div>
 
-      <div className="glass-panel" style={{ minHeight: '300px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(to right, rgba(255,255,255,0.8), rgba(255,255,255,0.5))' }}>
+      <div className="glass-panel" style={{ minHeight: '300px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg-color)' }}>
         <div style={{ textAlign: 'center', color: 'var(--text-muted)' }}>
-          <span style={{ fontSize: '3rem' }}>📊</span>
+          <span style={{ fontSize: '1.5rem', fontWeight: 600 }}>Biểu đồ đang cập nhật...</span>
           <p style={{ marginTop: '1rem' }}>[Khu vực hiển thị Biểu đồ Line Chart]</p>
           <p style={{ fontSize: '0.875rem' }}>(Tích hợp thư viện Chart.js hoặc Recharts ở giai đoạn sau)</p>
         </div>

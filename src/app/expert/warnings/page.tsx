@@ -8,7 +8,7 @@ export default function WarningsPage() {
   return (
     <div>
       <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
-        <h2><span style={{ color: 'var(--danger)' }}>⚠️</span> Hệ thống Cảnh báo</h2>
+        <h2 style={{ color: 'var(--danger)' }}>Hệ thống Cảnh báo</h2>
       </header>
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '1.5rem' }}>
@@ -24,7 +24,7 @@ export default function WarningsPage() {
             </div>
             <div style={{ display: 'flex', gap: '0.5rem', flexDirection: 'column' }}>
               <button className="btn btn-outline" style={{ padding: '0.4rem 0.8rem', fontSize: '0.875rem' }}>Xem chi tiết</button>
-              <button className="btn btn-primary" style={{ padding: '0.4rem 0.8rem', fontSize: '0.875rem', backgroundColor: 'var(--danger)', borderColor: 'var(--danger)' }}>📞 Gọi điện</button>
+              <button className="btn btn-primary" style={{ padding: '0.4rem 0.8rem', fontSize: '0.875rem', backgroundColor: 'var(--danger)', borderColor: 'var(--danger)' }}>Gọi điện</button>
             </div>
           </div>
           <div style={{ marginTop: '1rem', paddingTop: '1rem', borderTop: '1px solid var(--glass-border)' }}>

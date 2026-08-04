@@ -22,31 +22,31 @@ export default function PatientLayout({
             href="/patient" 
             className={`sidebar-link ${pathname === '/patient' ? 'active' : ''}`}
           >
-            📊 Tổng quan
+            Tổng quan
           </Link>
           <Link 
             href="/patient/chat" 
             className={`sidebar-link ${pathname.includes('/chat') ? 'active' : ''}`}
           >
-            💬 Chat với AI
+            Trợ lý AI
           </Link>
           <Link 
             href="/patient/menus" 
             className={`sidebar-link ${pathname.includes('/menus') ? 'active' : ''}`}
           >
-            🍱 Nhật ký Thực đơn
+            Nhật ký Thực đơn
           </Link>
           <Link 
             href="/patient/reports" 
             className={`sidebar-link ${pathname.includes('/reports') ? 'active' : ''}`}
           >
-            📈 Báo cáo Tuân thủ
+            Báo cáo Tuân thủ
           </Link>
           <Link 
             href="/patient/alerts" 
             className={`sidebar-link ${pathname.includes('/alerts') ? 'active' : ''}`}
           >
-            ⚠️ Cảnh báo
+            Cảnh báo
           </Link>
         </nav>
         

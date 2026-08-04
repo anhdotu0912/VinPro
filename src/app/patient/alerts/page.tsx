@@ -8,7 +8,7 @@ export default function AlertsPage() {
   return (
     <div>
       <header style={{ marginBottom: '2rem' }}>
-        <h2>⚠️ Cảnh báo Tuân thủ</h2>
+        <h2 style={{ color: 'var(--danger)' }}>Cảnh báo Tuân thủ</h2>
         <p style={{ color: 'var(--text-muted)' }}>Các lưu ý quan trọng từ hệ thống AI và Bác sĩ của bạn</p>
       </header>
 
@@ -17,7 +17,9 @@ export default function AlertsPage() {
         {/* Bác sĩ nhắc nhở */}
         <div className="glass-panel" style={{ borderLeft: '4px solid var(--danger)' }}>
           <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
-            <div style={{ fontSize: '2rem' }}>🚨</div>
+            <div style={{ padding: '0.5rem 1rem', background: '#fee2e2', color: '#b91c1c', borderRadius: 'var(--radius-md)', fontWeight: 600 }}>
+              Khẩn cấp
+            </div>
             <div>
               <h3 style={{ color: 'var(--danger)', marginBottom: '0.5rem' }}>Bác sĩ yêu cầu điều chỉnh bữa tối</h3>
               <p style={{ color: 'var(--text-main)', fontSize: '0.9rem', marginBottom: '0.5rem' }}>
@@ -31,7 +33,9 @@ export default function AlertsPage() {
         {/* AI Nhắc nhở */}
         <div className="glass-panel" style={{ borderLeft: '4px solid var(--warning)' }}>
           <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
-            <div style={{ fontSize: '2rem' }}>🤖</div>
+            <div style={{ padding: '0.5rem 1rem', background: '#fef3c7', color: '#b45309', borderRadius: 'var(--radius-md)', fontWeight: 600 }}>
+              Hệ thống AI
+            </div>
             <div>
               <h3 style={{ color: 'var(--warning)', marginBottom: '0.5rem' }}>Cảnh báo lượng Muối (Natri)</h3>
               <p style={{ color: 'var(--text-main)', fontSize: '0.9rem', marginBottom: '0.5rem' }}>

@@ -9,7 +9,7 @@ export default function MenusPage() {
       <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
         <h2>Nhật ký Thực đơn</h2>
         <button className="btn btn-primary" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <span>📸</span> Chụp ảnh bữa ăn
+          Tải ảnh bữa ăn
         </button>
       </header>
 
@@ -70,7 +70,7 @@ export default function MenusPage() {
             
             <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '1rem' }}>
               {/* Sáng */}
-              <div style={{ padding: '1.5rem', background: 'rgba(255,255,255,0.6)', borderRadius: 'var(--radius-md)', border: '1px solid #d1fae5', borderLeft: '4px solid #10b981' }}>
+              <div style={{ padding: '1.5rem', background: 'var(--bg-color)', borderRadius: 'var(--radius-md)', border: '1px solid #d1fae5', borderLeft: '4px solid #10b981' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                   <h4 style={{ color: 'var(--text-main)', fontSize: '1.1rem' }}>Bữa Sáng (07:00)</h4>
                   <span className="badge badge-success">Đã hoàn thành</span>
@@ -82,7 +82,7 @@ export default function MenusPage() {
               </div>
 
               {/* Trưa */}
-              <div style={{ padding: '1.5rem', background: 'rgba(255,255,255,0.6)', borderRadius: 'var(--radius-md)', border: '1px solid var(--glass-border)' }}>
+              <div style={{ padding: '1.5rem', background: 'var(--bg-color)', borderRadius: 'var(--radius-md)', border: '1px solid var(--glass-border)' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                   <h4 style={{ color: 'var(--text-main)', fontSize: '1.1rem' }}>Bữa Trưa (12:00)</h4>
                   <span className="badge badge-warning" style={{ background: '#e2e8f0', color: '#475569' }}>Sắp tới</span>
@@ -93,7 +93,7 @@ export default function MenusPage() {
                   <p>• Canh rau ngót nấu tôm (1 bát)</p>
                 </div>
                 <div style={{ marginTop: '1rem' }}>
-                  <button className="btn btn-outline" style={{ fontSize: '0.875rem', padding: '0.4rem 1rem' }}>Tải ảnh xác nhận</button>
+                  <button className="btn btn-outline" style={{ fontSize: '0.875rem', padding: '0.4rem 1rem' }}>Xác nhận bữa ăn</button>
                 </div>
               </div>
             </div>
@@ -104,7 +104,7 @@ export default function MenusPage() {
           <div className="glass-panel" style={{ borderLeft: '4px solid var(--warning)' }}>
             <h3 style={{ marginBottom: '1rem' }}>Thực đơn tuần tới (Gợi ý từ AI)</h3>
             <p style={{ color: 'var(--text-muted)', marginBottom: '1.5rem' }}>AI đã tạo ra thực đơn mới dựa trên dữ liệu đường huyết tuần này. <strong>Đang chờ bác sĩ phê duyệt.</strong></p>
-            <div style={{ padding: '2rem', textAlign: 'center', background: 'rgba(255,255,255,0.4)', borderRadius: 'var(--radius-md)' }}>
+            <div style={{ padding: '2rem', textAlign: 'center', background: 'var(--bg-color)', borderRadius: 'var(--radius-md)' }}>
               <p style={{ color: 'var(--text-muted)' }}>Vui lòng chờ chuyên gia dinh dưỡng của bạn duyệt thực đơn này trước khi có thể áp dụng.</p>
             </div>
           </div>

@@ -22,25 +22,25 @@ export default function ExpertLayout({
             href="/expert" 
             className={`sidebar-link ${pathname === '/expert' ? 'active' : ''}`}
           >
-            📊 Tổng quan (Dashboard)
+            Tổng quan
           </Link>
           <Link 
             href="/expert/patients" 
             className={`sidebar-link ${pathname.includes('/patients') ? 'active' : ''}`}
           >
-            👥 Quản lý Bệnh nhân
+            Quản lý Bệnh nhân
           </Link>
           <Link 
             href="/expert/menus" 
             className={`sidebar-link ${pathname.includes('/menus') ? 'active' : ''}`}
           >
-            🥗 Danh sách Thực đơn
+            Danh sách Thực đơn
           </Link>
           <Link 
             href="/expert/warnings" 
             className={`sidebar-link ${pathname.includes('/warnings') ? 'active' : ''}`}
           >
-            ⚠️ Hệ thống Cảnh báo
+            Hệ thống Cảnh báo
           </Link>
         </nav>
         

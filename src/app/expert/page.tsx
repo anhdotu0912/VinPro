@@ -8,21 +8,21 @@ export default function ExpertDashboard() {
   return (
     <div>
       <header style={{ marginBottom: '2rem' }}>
-        <h2><span className="text-gradient">Tổng quan (Dashboard)</span></h2>
-        <p style={{ color: 'var(--text-muted)' }}>Chào mừng Bác sĩ, hôm nay bạn có <strong style={{ color: 'var(--warning)' }}>3</strong> thực đơn đang chờ duyệt.</p>
+        <h2>Xin chào, <span className="text-gradient">Bs. Trần Văn C</span></h2>
+        <p style={{ color: 'var(--text-muted)' }}>Chúc bạn một ngày làm việc hiệu quả.</p>
       </header>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem', marginBottom: '2rem' }}>
         <div className="glass-panel" style={{ padding: '1.5rem', textAlign: 'center' }}>
-          <h3 style={{ fontSize: '2.5rem', color: 'var(--primary)' }}>124</h3>
+          <h3 style={{ fontSize: '2rem', color: 'var(--primary-dark)', marginBottom: '0.5rem' }}>142</h3>
           <p style={{ color: 'var(--text-muted)' }}>Tổng Bệnh nhân</p>
         </div>
         <div className="glass-panel" style={{ padding: '1.5rem', textAlign: 'center' }}>
-          <h3 style={{ fontSize: '2.5rem', color: 'var(--warning)' }}>3</h3>
+          <h3 style={{ fontSize: '2rem', color: 'var(--warning)', marginBottom: '0.5rem' }}>15</h3>
           <p style={{ color: 'var(--text-muted)' }}>Thực đơn chờ duyệt</p>
         </div>
         <div className="glass-panel" style={{ padding: '1.5rem', textAlign: 'center' }}>
-          <h3 style={{ fontSize: '2.5rem', color: 'var(--danger)' }}>1</h3>
+          <h3 style={{ fontSize: '2rem', color: 'var(--danger)', marginBottom: '0.5rem' }}>3</h3>
           <p style={{ color: 'var(--text-muted)' }}>Cảnh báo Mức cao</p>
         </div>
       </div>
