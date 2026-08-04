@@ -1,69 +1,47 @@
-import Image from "next/image";
+import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'NutriAgent AI - Trợ Lý Dinh Dưỡng Lâm Sàng',
+  description: 'AI Agent hỗ trợ dinh dưỡng theo bệnh lý',
+};
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="container animate-fade-in" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}>
+      <div className="glass-panel" style={{ maxWidth: '800px' }}>
+        <h1 className="text-gradient" style={{ fontSize: '3rem', marginBottom: '1rem' }}>
+          NutriAgent AI
+        </h1>
+        <p style={{ fontSize: '1.25rem', color: 'var(--text-muted)', marginBottom: '2rem' }}>
+          Trợ lý Dinh dưỡng & Lối sống Cá nhân hóa theo Bệnh lý. 
+          Kết hợp sức mạnh của AI và sự kiểm duyệt chuyên môn từ Bác sĩ.
+        </p>
+        
+        <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', marginTop: '2rem' }}>
+          <Link href="/patient" className="btn btn-primary" style={{ padding: '1rem 2rem', fontSize: '1.125rem' }}>
+            👨‍🦳 Dành cho Bệnh nhân
+          </Link>
+          <Link href="/expert" className="btn btn-outline" style={{ padding: '1rem 2rem', fontSize: '1.125rem' }}>
+            🩺 Dành cho Chuyên gia
+          </Link>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div style={{ marginTop: '3rem', paddingTop: '2rem', borderTop: '1px solid var(--glass-border)', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem', textAlign: 'left' }}>
+          <div>
+            <h3 style={{ color: 'var(--primary)', marginBottom: '0.5rem' }}>🎯 Cá nhân hóa</h3>
+            <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)' }}>Thực đơn thiết kế riêng dựa trên hồ sơ bệnh án và mục tiêu sức khỏe.</p>
+          </div>
+          <div>
+            <h3 style={{ color: 'var(--primary)', marginBottom: '0.5rem' }}>🛡️ An toàn (HITL)</h3>
+            <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)' }}>Mọi đề xuất từ AI đều phải qua sự kiểm duyệt của chuyên gia dinh dưỡng.</p>
+          </div>
+          <div>
+            <h3 style={{ color: 'var(--primary)', marginBottom: '0.5rem' }}>📊 Kiểm soát</h3>
+            <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)' }}>Theo dõi sát sao lượng đường, muối và calo hấp thụ mỗi ngày.</p>
+          </div>
         </div>
-      </main>
-    </div>
+      </div>
+    </main>
   );
 }
