@@ -1,60 +1,66 @@
-import type { Metadata } from 'next';
+'use client';
 import Link from 'next/link';
-
-export const metadata: Metadata = {
-  title: 'Tổng quan - NutriAgent AI',
-};
 
 export default function PatientDashboard() {
   return (
-    <div>
-      <header style={{ marginBottom: '2rem' }}>
-        <h2>Xin chào, <span className="text-gradient">Nguyễn Văn A</span> 👋</h2>
-        <p style={{ color: 'var(--text-muted)' }}>Mục tiêu hôm nay: Duy trì đường huyết ổn định &lt; 7.0 mmol/L.</p>
+    <div style={{ paddingBottom: '2rem' }}>
+      <header style={{ marginBottom: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div>
+          <h2 style={{ fontSize: '1.5rem' }}>Xin chào, Nguyễn Văn A</h2>
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>Mục tiêu: Đái tháo đường Type 2</p>
+        </div>
       </header>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '2rem' }}>
-        {/* Left Column */}
-        <div>
-          <div className="glass-panel" style={{ marginBottom: '1.5rem', padding: '1.5rem' }}>
-            <h3 style={{ marginBottom: '1rem', borderBottom: '1px solid var(--glass-border)', paddingBottom: '0.5rem' }}>Hồ sơ Bệnh lý</h3>
-            <ul style={{ listStyle: 'none', color: 'var(--text-muted)' }}>
-              <li style={{ marginBottom: '0.5rem' }}><strong>Tuổi:</strong> 55</li>
-              <li style={{ marginBottom: '0.5rem' }}><strong>BMI:</strong> 26.5 (Thừa cân)</li>
-              <li style={{ marginBottom: '0.5rem' }}><strong>Bệnh lý:</strong> Đái tháo đường type 2</li>
-              <li style={{ marginBottom: '0.5rem' }}><strong>Dị ứng:</strong> Đậu phộng</li>
-            </ul>
-          </div>
-
-          <div className="glass-panel" style={{ padding: '1.5rem', borderLeft: '4px solid var(--warning)' }}>
-            <h3 style={{ marginBottom: '1rem', color: 'var(--warning)' }}>⚠️ Nhắc nhở hôm nay</h3>
-            <p style={{ fontSize: '0.875rem', marginBottom: '0.5rem' }}>Bạn chưa cập nhật ảnh bữa sáng.</p>
-            <Link href="/patient/menus" className="btn btn-outline" style={{ padding: '0.5rem 1rem', fontSize: '0.875rem', marginTop: '1rem', display: 'inline-block' }}>Cập nhật ngay</Link>
+      {/* Kcal & Nutrition Summary (Circular Progress Mockup) */}
+      <div className="glass-panel" style={{ marginBottom: '1.5rem', textAlign: 'center', padding: '1.5rem' }}>
+        <h3 style={{ marginBottom: '1rem', fontSize: '1.1rem' }}>Lượng Calo hôm nay</h3>
+        <div style={{ position: 'relative', width: '120px', height: '120px', margin: '0 auto', borderRadius: '50%', background: 'conic-gradient(var(--primary) 65%, var(--primary-light) 65%)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div style={{ width: '100px', height: '100px', background: 'var(--surface-color)', borderRadius: '50%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+            <span style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'var(--primary-dark)' }}>1200</span>
+            <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>/ 1800 kcal</span>
           </div>
         </div>
-
-        {/* Right Column */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '1.5rem' }}>
-          <div className="glass-panel">
-            <h3 style={{ marginBottom: '1rem' }}>Thực đơn tiếp theo: Bữa Trưa (12:00)</h3>
-            <div style={{ padding: '1rem', background: 'rgba(255,255,255,0.4)', borderRadius: 'var(--radius-md)', border: '1px solid var(--glass-border)' }}>
-              <p>• Cơm gạo lứt (1 bát nhỏ - 100g)</p>
-              <p>• Cá hồi áp chảo (100g)</p>
-              <p>• Canh rau ngót nấu tôm (1 bát)</p>
-              <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '0.5rem' }}>Năng lượng: 500 kcal | Carbs: 50g</p>
-            </div>
-            <div style={{ marginTop: '1rem', textAlign: 'right' }}>
-               <Link href="/patient/menus" className="btn btn-primary" style={{ padding: '0.5rem 1rem', fontSize: '0.875rem' }}>Xem toàn bộ thực đơn</Link>
-            </div>
+        
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '1.5rem' }}>
+          <div style={{ textAlign: 'center' }}>
+            <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Đường</p>
+            <p style={{ fontWeight: 600, color: 'var(--warning)' }}>40/50g</p>
           </div>
-
-          <div className="glass-panel" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'linear-gradient(135deg, var(--primary-light), white)' }}>
-            <div>
-              <h3 style={{ color: 'var(--primary-dark)', marginBottom: '0.5rem' }}>Bạn có câu hỏi về dinh dưỡng?</h3>
-              <p style={{ color: 'var(--text-muted)', fontSize: '0.875rem' }}>AI Agent luôn sẵn sàng giải đáp 24/7</p>
-            </div>
-            <Link href="/patient/chat" className="btn btn-primary">💬 Chat ngay</Link>
+          <div style={{ textAlign: 'center' }}>
+            <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Muối</p>
+            <p style={{ fontWeight: 600, color: 'var(--success)' }}>3/5g</p>
           </div>
+          <div style={{ textAlign: 'center' }}>
+            <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Đạm</p>
+            <p style={{ fontWeight: 600, color: 'var(--primary)' }}>45/60g</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Today's Menu Snippet */}
+      <div style={{ marginBottom: '1.5rem' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+          <h3 style={{ fontSize: '1.1rem' }}>Thực đơn hôm nay</h3>
+          <Link href="/patient/menus" style={{ fontSize: '0.875rem', color: 'var(--primary)', fontWeight: 500 }}>Xem tất cả</Link>
+        </div>
+        <div className="glass-panel" style={{ padding: '1rem', borderLeft: '4px solid var(--warning)' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
+            <h4 style={{ fontSize: '1rem' }}>Bữa Trưa (12:00)</h4>
+            <span className="badge badge-warning" style={{ fontSize: '0.7rem' }}>Sắp tới</span>
+          </div>
+          <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>Cơm gạo lứt (100g), Cá hồi áp chảo, Canh rau ngót.</p>
+          <div style={{ marginTop: '1rem', display: 'flex', gap: '0.5rem' }}>
+            <Link href="/patient/log-meal" className="btn btn-primary" style={{ padding: '0.4rem 0.8rem', fontSize: '0.8rem', flex: 1 }}>Xác nhận bữa ăn</Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Alerts */}
+      <div>
+        <h3 style={{ fontSize: '1.1rem', marginBottom: '1rem' }}>Cảnh báo & Lời khuyên</h3>
+        <div className="glass-panel" style={{ padding: '1rem', background: '#fef3c7', borderColor: '#fde68a' }}>
+          <h4 style={{ color: '#b45309', fontSize: '0.95rem', marginBottom: '0.5rem' }}>Mức đường huyết hôm qua hơi cao</h4>
+          <p style={{ fontSize: '0.85rem', color: '#92400e' }}>AI nhận thấy bạn đã ăn bánh ngọt vào tối qua. Hôm nay hãy chú ý giảm tinh bột vào bữa tối nhé!</p>
         </div>
       </div>
     </div>
