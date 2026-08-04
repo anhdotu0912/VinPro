@@ -1,20 +1,20 @@
-import Link from 'next/link';
 import type { Metadata } from 'next';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Patient Dashboard - NutriAgent AI',
+  title: 'Tổng quan - NutriAgent AI',
 };
 
 export default function PatientDashboard() {
   return (
-    <div className="container animate-fade-in" style={{ paddingTop: '2rem' }}>
-      <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
-        <h2>Xin chào, <span className="text-gradient">Nguyễn Văn A</span></h2>
-        <Link href="/" className="btn btn-outline" style={{ padding: '0.5rem 1rem' }}>Đăng xuất</Link>
+    <div>
+      <header style={{ marginBottom: '2rem' }}>
+        <h2>Xin chào, <span className="text-gradient">Nguyễn Văn A</span> 👋</h2>
+        <p style={{ color: 'var(--text-muted)' }}>Mục tiêu hôm nay: Duy trì đường huyết ổn định &lt; 7.0 mmol/L.</p>
       </header>
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '2rem' }}>
-        {/* Left Column - Profile & Warnings */}
+        {/* Left Column */}
         <div>
           <div className="glass-panel" style={{ marginBottom: '1.5rem', padding: '1.5rem' }}>
             <h3 style={{ marginBottom: '1rem', borderBottom: '1px solid var(--glass-border)', paddingBottom: '0.5rem' }}>Hồ sơ Bệnh lý</h3>
@@ -27,47 +27,33 @@ export default function PatientDashboard() {
           </div>
 
           <div className="glass-panel" style={{ padding: '1.5rem', borderLeft: '4px solid var(--warning)' }}>
-            <h3 style={{ marginBottom: '1rem', color: 'var(--warning)' }}>⚠️ Mục tiêu hiện tại</h3>
-            <p style={{ fontSize: '0.875rem', marginBottom: '0.5rem' }}>• <strong>Đường huyết mục tiêu:</strong> &lt; 7.0 mmol/L</p>
-            <p style={{ fontSize: '0.875rem', marginBottom: '0.5rem' }}>• <strong>Năng lượng:</strong> ~1800 kcal/ngày</p>
-            <p style={{ fontSize: '0.875rem' }}>• <strong>Cảnh báo:</strong> Hạn chế tối đa carbohydrate hấp thu nhanh.</p>
+            <h3 style={{ marginBottom: '1rem', color: 'var(--warning)' }}>⚠️ Nhắc nhở hôm nay</h3>
+            <p style={{ fontSize: '0.875rem', marginBottom: '0.5rem' }}>Bạn chưa cập nhật ảnh bữa sáng.</p>
+            <Link href="/patient/menus" className="btn btn-outline" style={{ padding: '0.5rem 1rem', fontSize: '0.875rem', marginTop: '1rem', display: 'inline-block' }}>Cập nhật ngay</Link>
           </div>
         </div>
 
-        {/* Right Column - Today's Menu */}
-        <div>
+        {/* Right Column */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '1.5rem' }}>
           <div className="glass-panel">
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-              <h3 className="text-gradient">Thực đơn Đề xuất (Hôm nay)</h3>
-              <span className="badge badge-warning">Đang chờ Bác sĩ duyệt</span>
+            <h3 style={{ marginBottom: '1rem' }}>Thực đơn tiếp theo: Bữa Trưa (12:00)</h3>
+            <div style={{ padding: '1rem', background: 'rgba(255,255,255,0.4)', borderRadius: 'var(--radius-md)', border: '1px solid var(--glass-border)' }}>
+              <p>• Cơm gạo lứt (1 bát nhỏ - 100g)</p>
+              <p>• Cá hồi áp chảo (100g)</p>
+              <p>• Canh rau ngót nấu tôm (1 bát)</p>
+              <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '0.5rem' }}>Năng lượng: 500 kcal | Carbs: 50g</p>
             </div>
-            
-            <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', marginBottom: '1.5rem' }}>
-              AI Agent đã tổng hợp thực đơn này dựa trên dữ liệu Bảng Thành Phần Thực Phẩm VN và phác đồ điều trị tiểu đường.
-            </p>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              {/* Meal Item */}
-              <div style={{ padding: '1rem', background: 'rgba(255,255,255,0.4)', borderRadius: 'var(--radius-md)', border: '1px solid var(--glass-border)' }}>
-                <h4 style={{ color: 'var(--primary-dark)', marginBottom: '0.5rem' }}>Sáng (07:00)</h4>
-                <p>• Phở xào gạo lứt (150g) + Thịt bò mềm (50g)</p>
-                <p>• Trau xanh luộc (100g)</p>
-                <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '0.5rem' }}>Năng lượng: 350 kcal | Carbs: 45g</p>
-              </div>
-
-              {/* Meal Item */}
-              <div style={{ padding: '1rem', background: 'rgba(255,255,255,0.4)', borderRadius: 'var(--radius-md)', border: '1px solid var(--glass-border)' }}>
-                <h4 style={{ color: 'var(--primary-dark)', marginBottom: '0.5rem' }}>Trưa (12:00)</h4>
-                <p>• Cơm gạo lứt (1 bát nhỏ - 100g)</p>
-                <p>• Cá hồi áp chảo (100g)</p>
-                <p>• Canh rau ngót nấu tôm (1 bát)</p>
-                <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '0.5rem' }}>Năng lượng: 500 kcal | Carbs: 50g</p>
-              </div>
+            <div style={{ marginTop: '1rem', textAlign: 'right' }}>
+               <Link href="/patient/menus" className="btn btn-primary" style={{ padding: '0.5rem 1rem', fontSize: '0.875rem' }}>Xem toàn bộ thực đơn</Link>
             </div>
+          </div>
 
-            <div style={{ marginTop: '2rem', padding: '1rem', background: '#fef2f2', border: '1px solid #fecaca', borderRadius: 'var(--radius-md)', color: '#991b1b', fontSize: '0.875rem' }}>
-              <strong>Lưu ý quan trọng:</strong> Chế độ ăn này chưa được chuyên gia dinh dưỡng phê duyệt. Vui lòng chờ thông báo xác nhận trước khi áp dụng!
+          <div className="glass-panel" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'linear-gradient(135deg, var(--primary-light), white)' }}>
+            <div>
+              <h3 style={{ color: 'var(--primary-dark)', marginBottom: '0.5rem' }}>Bạn có câu hỏi về dinh dưỡng?</h3>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.875rem' }}>AI Agent luôn sẵn sàng giải đáp 24/7</p>
             </div>
+            <Link href="/patient/chat" className="btn btn-primary">💬 Chat ngay</Link>
           </div>
         </div>
       </div>
