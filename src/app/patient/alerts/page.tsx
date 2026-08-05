@@ -22,7 +22,7 @@ export default function AlertsPage() {
             </div>
             <div>
               <h3 style={{ color: 'var(--danger)', marginBottom: '0.5rem' }}>Bác sĩ yêu cầu điều chỉnh bữa tối</h3>
-              <p style={{ color: 'var(--text-main)', fontSize: '0.9rem', marginBottom: '0.5rem' }}>
+              <p style={{ color: 'var(--text-main)', fontSize: '1rem', marginBottom: '0.5rem' }}>
                 Đường huyết buổi sáng của bạn trong 3 ngày qua đều ở mức &gt; 8.0 mmol/L. Bác sĩ Trần Văn C đã yêu cầu giảm 30% lượng tinh bột vào bữa tối.
               </p>
               <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Thời gian: Hôm nay, 08:30</p>
@@ -38,7 +38,7 @@ export default function AlertsPage() {
             </div>
             <div>
               <h3 style={{ color: 'var(--warning)', marginBottom: '0.5rem' }}>Cảnh báo lượng Muối (Natri)</h3>
-              <p style={{ color: 'var(--text-main)', fontSize: '0.9rem', marginBottom: '0.5rem' }}>
+              <p style={{ color: 'var(--text-main)', fontSize: '1rem', marginBottom: '0.5rem' }}>
                 Hệ thống nhận thấy món "Canh dưa chua bắp bò" bạn nhập vào trưa hôm qua chứa lượng Natri rất cao. Điều này có thể ảnh hưởng đến huyết áp của bạn.
               </p>
               <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Thời gian: Hôm qua, 14:00</p>

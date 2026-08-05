@@ -1,117 +1,132 @@
-'use client';
-import { useState } from 'react';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 
+export const metadata: Metadata = {
+  title: 'Nhật ký Thực đơn - Sống Khỏe',
+};
+
 export default function LogMealPage() {
-  const [showPopup, setShowPopup] = useState(false);
-  const [mealText, setMealText] = useState('');
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.createElement; // just to ignore unused React
-    e.preventDefault();
-    if (mealText) {
-      setShowPopup(true);
-    }
-  };
-
   return (
-    <div>
-      <header style={{ marginBottom: '2rem' }}>
-        <h2 style={{ fontSize: '1.75rem', color: 'var(--primary-dark)', marginBottom: '0.5rem' }}>Nhật ký Bữa ăn</h2>
-        <p style={{ color: 'var(--text-muted)' }}>Chụp ảnh hoặc nhập mô tả món ăn bạn vừa dùng. AI sẽ tự động phân tích thành phần dinh dưỡng.</p>
+    <div style={{ maxWidth: '1000px', margin: '0 auto', paddingBottom: '4rem' }}>
+      {/* Top Bar */}
+      <header style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
+        <button style={{ background: 'none', border: 'none', fontSize: '1.25rem', color: 'var(--text-muted)', cursor: 'pointer' }}></button>
+        <button style={{ background: 'none', border: 'none', fontSize: '1.25rem', color: 'var(--primary)', cursor: 'pointer' }}></button>
       </header>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
+      <div style={{ marginBottom: '1.5rem' }}>
+        <h2 style={{ fontSize: '1.5rem', color: 'var(--text-main)', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          Chào cô Lan! <span style={{ fontSize: '1.2rem' }}></span>
+        </h2>
         
-        {/* Upload Image Section */}
-        <div className="glass-panel" style={{ display: 'flex', flexDirection: 'column' }}>
-          <h3 style={{ marginBottom: '1.5rem', fontSize: '1.1rem' }}>Tải ảnh lên</h3>
-          
-          <div style={{ 
-            border: '2px dashed var(--glass-border)', 
-            borderRadius: 'var(--radius-lg)', 
-            padding: '4rem 2rem', 
-            textAlign: 'center',
-            background: 'var(--bg-color)',
-            cursor: 'pointer',
-            flex: 1,
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center'
-          }}>
-            <div style={{ fontSize: '4rem', marginBottom: '1.5rem', color: 'var(--primary)' }}>📷</div>
-            <p style={{ fontWeight: 600, fontSize: '1.1rem', marginBottom: '0.5rem' }}>Kéo thả hoặc Nhấp để chọn ảnh</p>
-            <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)' }}>Hỗ trợ JPG, PNG (Tối đa 5MB)</p>
-          </div>
+        {/* Alert Banner */}
+        <div style={{ background: '#ffedd5', color: '#c2410c', padding: '0.75rem 1rem', borderRadius: 'var(--radius-md)', display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 500, fontSize: '0.95rem' }}>
+          <span>️</span> Hôm qua cô đã nạp hơi nhiều Carb, hôm nay mình ăn thanh đạm hơn nhé!
         </div>
-
-        {/* Text Input Section */}
-        <div className="glass-panel" style={{ display: 'flex', flexDirection: 'column' }}>
-          <h3 style={{ marginBottom: '1.5rem', fontSize: '1.1rem' }}>Nhập thủ công</h3>
-          
-          <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', flex: 1 }}>
-            <div style={{ flex: 1 }}>
-              <label style={{ display: 'block', fontSize: '0.9rem', fontWeight: 500, marginBottom: '0.75rem' }}>Mô tả món ăn</label>
-              <textarea 
-                placeholder="VD: 1 bát cơm gạo lứt, 1 lát cá hồi áp chảo, 1 bát canh mồng tơi..." 
-                value={mealText}
-                onChange={(e) => setMealText(e.target.value)}
-                style={{ width: '100%', padding: '1rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--glass-border)', minHeight: '150px', resize: 'vertical' }} 
-              />
-            </div>
-            
-            <button type="submit" className="btn btn-primary" style={{ width: '100%', padding: '1rem', fontSize: '1.1rem' }} disabled={!mealText}>
-              Phân tích & Lưu Bữa Ăn
-            </button>
-          </form>
-        </div>
-
       </div>
 
-      {/* AI Analysis Popup */}
-      {showPopup && (
-        <div className="popup-overlay">
-          <div className="popup-content animate-fade-in">
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-              <h3 style={{ color: 'var(--primary-dark)', fontSize: '1.25rem' }}>Kết quả Phân tích AI</h3>
-              <button onClick={() => setShowPopup(false)} style={{ background: 'none', border: 'none', fontSize: '1.5rem', cursor: 'pointer', color: 'var(--text-muted)' }}>&times;</button>
-            </div>
-            
-            <div style={{ background: '#f8fafc', padding: '1.5rem', borderRadius: 'var(--radius-md)', marginBottom: '1.5rem' }}>
-              <p style={{ fontSize: '1rem', marginBottom: '0.75rem' }}><strong>Món ăn:</strong> {mealText}</p>
-              <p style={{ fontSize: '1rem', marginBottom: '1rem' }}><strong>Ước tính Kcal:</strong> ~450 kcal</p>
-              
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem', marginTop: '1rem' }}>
-                <div style={{ textAlign: 'center', padding: '1rem', background: '#fee2e2', borderRadius: 'var(--radius-md)' }}>
-                  <p style={{ fontSize: '0.85rem', color: '#b91c1c', marginBottom: '0.25rem' }}>Đường / Tinh bột</p>
-                  <p style={{ fontWeight: 'bold', color: '#b91c1c', fontSize: '1.1rem' }}>Cao</p>
-                </div>
-                <div style={{ textAlign: 'center', padding: '1rem', background: '#d1fae5', borderRadius: 'var(--radius-md)' }}>
-                  <p style={{ fontSize: '0.85rem', color: '#047857', marginBottom: '0.25rem' }}>Đạm (Protein)</p>
-                  <p style={{ fontWeight: 'bold', color: '#047857', fontSize: '1.1rem' }}>Vừa đủ</p>
-                </div>
-                <div style={{ textAlign: 'center', padding: '1rem', background: '#e0f2fe', borderRadius: 'var(--radius-md)' }}>
-                  <p style={{ fontSize: '0.85rem', color: '#0369a1', marginBottom: '0.25rem' }}>Chất Xơ</p>
-                  <p style={{ fontWeight: 'bold', color: '#0369a1', fontSize: '1.1rem' }}>Thấp</p>
-                </div>
-              </div>
-            </div>
-
-            <div style={{ padding: '1.25rem', background: '#fef3c7', borderRadius: 'var(--radius-md)', borderLeft: '4px solid var(--warning)', marginBottom: '2rem' }}>
-              <h4 style={{ color: '#b45309', marginBottom: '0.5rem', fontSize: '1rem' }}>Lời khuyên từ AI (Dựa trên hồ sơ Tiểu đường Type 2):</h4>
-              <p style={{ fontSize: '0.9rem', color: '#92400e', lineHeight: 1.6 }}>
-                Món này chứa khá nhiều tinh bột và ít chất xơ. Bạn nên bổ sung thêm một đĩa rau xanh luộc vào bữa ăn này, kết hợp vận động nhẹ (đi bộ 15 phút) sau bữa ăn để giúp ổn định đường huyết tốt hơn.
-              </p>
-            </div>
-
-            <div style={{ display: 'flex', gap: '1rem' }}>
-              <button onClick={() => setShowPopup(false)} className="btn btn-outline" style={{ flex: 1, padding: '0.875rem' }}>Thử lại</button>
-              <Link href="/patient" className="btn btn-primary" style={{ flex: 2, padding: '0.875rem', textAlign: 'center' }}>Xác nhận Lưu Bữa Ăn</Link>
+      {/* Summary Cards */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1.5rem', marginBottom: '2.5rem' }}>
+        {/* Calories Card */}
+        <div className="glass-panel" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '1.5rem 1rem' }}>
+          <h3 style={{ fontSize: '0.875rem', color: 'var(--text-muted)', marginBottom: '1rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Năng lượng (Kcal)</h3>
+          
+          <div className="circular-progress" style={{ width: '120px', height: '120px', marginBottom: '1rem' }}>
+            <svg width="120" height="120" viewBox="0 0 120 120">
+              <circle className="circular-progress-bg" cx="60" cy="60" r="54"></circle>
+              <circle className="circular-progress-value" cx="60" cy="60" r="54" style={{ stroke: 'var(--primary)', strokeDasharray: '339.292', strokeDashoffset: '84.823' }}></circle>
+            </svg>
+            <div className="circular-text" style={{ display: 'flex', flexDirection: 'column' }}>
+              <span style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--text-main)' }}>1200</span>
+              <span style={{ fontSize: '0.95rem', color: 'var(--text-muted)' }}>/ 1600</span>
             </div>
           </div>
+          
+          <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', margin: 0 }}>Cô còn 400 kcal nữa ạ</p>
         </div>
-      )}
+
+        {/* Carbs Card */}
+        <div className="glass-panel" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '1.5rem 1rem' }}>
+          <h3 style={{ fontSize: '0.875rem', color: 'var(--text-muted)', marginBottom: '1rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Tinh bột (Carb)</h3>
+          
+          <div className="circular-progress" style={{ width: '120px', height: '120px', marginBottom: '1rem' }}>
+            <svg width="120" height="120" viewBox="0 0 120 120">
+              <circle className="circular-progress-bg" cx="60" cy="60" r="54"></circle>
+              <circle className="circular-progress-value" cx="60" cy="60" r="54" style={{ stroke: 'var(--danger)', strokeDasharray: '339.292', strokeDashoffset: '67.858' }}></circle>
+            </svg>
+            <div className="circular-text" style={{ display: 'flex', flexDirection: 'column' }}>
+              <span style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--danger)' }}>120g</span>
+              <span style={{ fontSize: '0.95rem', color: 'var(--text-muted)' }}>/ 150g</span>
+            </div>
+          </div>
+          
+          <p style={{ fontSize: '0.875rem', color: 'var(--danger)', margin: 0, fontWeight: 600 }}>! Sắp chạm giới hạn</p>
+        </div>
+
+        {/* Protein & Fat Card */}
+        <div className="glass-panel" style={{ background: 'var(--surface-color)', border: 'none', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '1rem', padding: '1.5rem' }}>
+          <div style={{ background: 'white', padding: '1rem', borderRadius: 'var(--radius-md)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 500 }}>
+              <span style={{ color: 'var(--primary)' }}></span> Đạm (Protein)
+            </div>
+            <div style={{ fontWeight: 600 }}>65g <span style={{ color: 'var(--text-muted)', fontWeight: 400, fontSize: '1rem' }}>/ 80g</span></div>
+          </div>
+          
+          <div style={{ background: 'white', padding: '1rem', borderRadius: 'var(--radius-md)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 500 }}>
+              <span style={{ color: 'var(--primary)' }}></span> Chất béo
+            </div>
+            <div style={{ fontWeight: 600 }}>30g <span style={{ color: 'var(--text-muted)', fontWeight: 400, fontSize: '1rem' }}>/ 45g</span></div>
+          </div>
+        </div>
+      </div>
+
+      {/* Today's Menu */}
+      <div style={{ marginBottom: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+        <h3 style={{ fontSize: '1.1rem', color: 'var(--text-main)', margin: 0 }}>Thực đơn hôm nay</h3>
+        <span style={{ fontSize: '1rem', color: 'var(--text-muted)' }}>Thứ Hai, 14 tháng 10</span>
+      </div>
+
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '2rem' }}>
+        {/* Breakfast */}
+        <div className="glass-panel" style={{ padding: '1.25rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            <div style={{ width: '60px', height: '60px', borderRadius: 'var(--radius-md)', background: 'url(https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&q=80&w=200) center/cover' }}></div>
+            <div>
+              <div style={{ fontSize: '0.85rem', color: 'var(--primary)', fontWeight: 600, textTransform: 'uppercase', marginBottom: '0.25rem' }}>Bữa sáng</div>
+              <div style={{ fontWeight: 600, color: 'var(--text-main)' }}>Cháo yến mạch thịt bằm</div>
+            </div>
+          </div>
+          <div style={{ fontWeight: 600, color: 'var(--text-muted)' }}>350 kcal</div>
+        </div>
+
+        {/* Lunch */}
+        <div className="glass-panel" style={{ padding: '1.25rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            <div style={{ width: '60px', height: '60px', borderRadius: 'var(--radius-md)', background: 'url(https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&q=80&w=200) center/cover' }}></div>
+            <div>
+              <div style={{ fontSize: '0.85rem', color: 'var(--primary)', fontWeight: 600, textTransform: 'uppercase', marginBottom: '0.25rem' }}>Bữa trưa</div>
+              <div style={{ fontWeight: 600, color: 'var(--text-main)' }}>Cơm lứt + Cá lóc kho tộ + Rau luộc</div>
+              <div style={{ fontSize: '0.95rem', color: 'var(--text-muted)', marginTop: '0.25rem' }}>1 bát cơm lứt nhỏ</div>
+            </div>
+          </div>
+          <div style={{ fontWeight: 600, color: 'var(--text-muted)' }}>550 kcal</div>
+        </div>
+      </div>
+
+      {/* Suggestion Box */}
+      <div style={{ border: '2px dashed #cbd5e1', borderRadius: 'var(--radius-lg)', padding: '3rem 2rem', textAlign: 'center', background: 'var(--surface-color)' }}>
+        <div style={{ fontSize: '2rem', color: 'var(--text-muted)', marginBottom: '1rem' }}></div>
+        <h3 style={{ fontSize: '1.25rem', color: 'var(--text-main)', marginBottom: '0.5rem' }}>Bữa tối này cô muốn ăn gì?</h3>
+        <p style={{ color: 'var(--text-muted)', marginBottom: '1.5rem', maxWidth: '400px', margin: '0 auto 1.5rem' }}>Sống Khỏe sẽ gợi ý món ăn phù hợp với lượng Carb còn lại của cô.</p>
+        <button className="btn btn-primary" style={{ padding: '0.75rem 2rem', borderRadius: '9999px' }}>Nhấn để xem gợi ý</button>
+      </div>
+
+      {/* Floating Action Button */}
+      <button style={{ position: 'fixed', bottom: '2rem', right: '2rem', background: 'var(--warning)', color: 'white', border: 'none', padding: '1rem 1.5rem', borderRadius: '9999px', display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 600, fontSize: '1rem', boxShadow: 'var(--shadow-lg)', cursor: 'pointer', zIndex: 50 }}>
+        <span></span> CHỤP ẢNH BỮA ĂN (LOG FOOD)
+      </button>
+
     </div>
   );
 }

@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap');
 
 :root {
-  --primary-light: #e2e8f0;
-  --primary: #0f172a;
-  --primary-dark: #020617;
+  --primary-light: #e0f2fe;
+  --primary: #0284c7;
+  --primary-dark: #0369a1;
   --secondary: #475569;
   --accent: #334155;
   
@@ -15,7 +15,7 @@
   
   --danger: #dc2626;
   --warning: #d97706;
-  --success: #059669;
+  --success: #0284c7;
   
   --glass-bg: #ffffff;
   --glass-border: #e2e8f0;
@@ -34,6 +34,30 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+html {
+  font-size: 105%;
+}
+
+.form-label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--text-main);
+  font-size: 0.95rem;
+}
+
+.form-input {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  font-family: inherit;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  background-color: var(--surface-color);
+  color: var(--text-main);
+  transition: all 0.2s;
 }
 
 body {
@@ -102,10 +126,16 @@ a:hover {
   transition: all 0.2s ease-in-out;
 }
 
+.form-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.2);
+}
+
 .btn-primary {
-  background: linear-gradient(135deg, var(--primary), #00bfa5);
+  background: linear-gradient(135deg, var(--primary), #38bdf8);
   color: white;
-  box-shadow: 0 4px 6px rgba(0, 150, 136, 0.2);
+  box-shadow: 0 4px 6px rgba(2, 132, 199, 0.2);
 }
 
 .btn-primary:hover {
@@ -158,8 +188,8 @@ a:hover {
   color: #b91c1c;
 }
 .badge-success {
-  background-color: #d1fae5;
-  color: #047857;
+  background-color: #e0f2fe;
+  color: #0284c7;
 }
 
 /* Table styles */

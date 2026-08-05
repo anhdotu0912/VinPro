@@ -60,7 +60,7 @@ export default function PatientLayout({ children }: { children: React.ReactNode 
             </div>
             <div>
               <p style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--text-main)' }}>Nguyễn Văn A</p>
-              <Link href="/patient/login" style={{ fontSize: '0.75rem', color: 'var(--danger)' }}>Đăng xuất</Link>
+              <Link href="/patient/login" style={{ fontSize: '0.85rem', color: 'var(--danger)' }}>Đăng xuất</Link>
             </div>
           </div>
         </div>

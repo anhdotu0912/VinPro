@@ -48,17 +48,17 @@ export default function PatientDashboard() {
             <div style={{ padding: '1rem', borderRadius: 'var(--radius-md)', background: 'var(--bg-color)', borderLeft: '4px solid var(--success)' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
                 <h4 style={{ fontSize: '1rem' }}>Bữa Sáng</h4>
-                <span className="badge badge-success" style={{ fontSize: '0.75rem' }}>Hoàn thành</span>
+                <span className="badge badge-success" style={{ fontSize: '0.85rem' }}>Hoàn thành</span>
               </div>
-              <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>Phở xào gạo lứt (150g), Thịt bò mềm (50g)</p>
+              <p style={{ fontSize: '1rem', color: 'var(--text-muted)' }}>Phở xào gạo lứt (150g), Thịt bò mềm (50g)</p>
             </div>
 
             <div style={{ padding: '1rem', borderRadius: 'var(--radius-md)', background: 'var(--bg-color)', borderLeft: '4px solid var(--warning)' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
                 <h4 style={{ fontSize: '1rem' }}>Bữa Trưa (12:00)</h4>
-                <span className="badge badge-warning" style={{ fontSize: '0.75rem' }}>Sắp tới</span>
+                <span className="badge badge-warning" style={{ fontSize: '0.85rem' }}>Sắp tới</span>
               </div>
-              <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>Cơm gạo lứt (100g), Cá hồi áp chảo, Canh rau ngót.</p>
+              <p style={{ fontSize: '1rem', color: 'var(--text-muted)' }}>Cơm gạo lứt (100g), Cá hồi áp chảo, Canh rau ngót.</p>
               <div style={{ marginTop: '1rem', textAlign: 'right' }}>
                 <Link href="/patient/log-meal" className="btn btn-outline" style={{ padding: '0.4rem 1rem', fontSize: '0.875rem' }}>Log Bữa ăn</Link>
               </div>
@@ -72,10 +72,10 @@ export default function PatientDashboard() {
             <h3 style={{ fontSize: '1.25rem', marginBottom: '1.5rem' }}>Hành động nhanh</h3>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '1rem' }}>
               <Link href="/patient/log-meal" className="btn btn-primary" style={{ justifyContent: 'flex-start', gap: '1rem', padding: '1rem' }}>
-                <span style={{ fontSize: '1.25rem' }}>📷</span> Ghi nhận Bữa ăn
+                <span style={{ fontSize: '1.25rem' }}></span> Ghi nhận Bữa ăn
               </Link>
               <Link href="/patient/chat" className="btn btn-outline" style={{ justifyContent: 'flex-start', gap: '1rem', padding: '1rem' }}>
-                <span style={{ fontSize: '1.25rem' }}>🤖</span> Hỏi Trợ lý AI
+                <span style={{ fontSize: '1.25rem' }}></span> Hỏi Trợ lý AI
               </Link>
             </div>
           </div>
@@ -88,7 +88,7 @@ export default function PatientDashboard() {
             
             <div style={{ padding: '1rem', background: '#fef3c7', borderRadius: 'var(--radius-md)', borderLeft: '4px solid var(--warning)' }}>
               <h4 style={{ color: '#b45309', fontSize: '0.95rem', marginBottom: '0.5rem' }}>Đường huyết tăng nhẹ</h4>
-              <p style={{ fontSize: '0.85rem', color: '#92400e' }}>AI nhận thấy bạn đã nạp khá nhiều tinh bột vào tối qua. Hôm nay hãy chú ý giảm tinh bột và uống nhiều nước nhé!</p>
+              <p style={{ fontSize: '0.95rem', color: '#92400e' }}>AI nhận thấy bạn đã nạp khá nhiều tinh bột vào tối qua. Hôm nay hãy chú ý giảm tinh bột và uống nhiều nước nhé!</p>
             </div>
           </div>
         </div>

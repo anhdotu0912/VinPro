@@ -1,144 +1,203 @@
-'use client';
-import { useState } from 'react';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Thực đơn của tôi - Sống Khỏe',
+};
 
 export default function MenusPage() {
-  const [activeTab, setActiveTab] = useState('daily');
-
   return (
-    <div>
-      <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
-        <h2>Nhật ký Thực đơn</h2>
-        <button className="btn btn-primary" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          Tải ảnh bữa ăn
-        </button>
+    <div style={{ maxWidth: '1000px', margin: '0 auto', paddingBottom: '2rem' }}>
+      {/* Top Bar */}
+      <header style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
+        <span style={{ fontSize: '0.875rem', color: 'var(--text-muted)' }}>Chào cụ Lan</span>
+        <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: 'var(--primary-light)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary-dark)', fontWeight: 600, fontSize: '0.95rem' }}>
+          CL
+        </div>
       </header>
 
-      {/* Tabs */}
-      <div style={{ display: 'flex', gap: '1rem', borderBottom: '1px solid var(--glass-border)', marginBottom: '2rem' }}>
-        <button 
-          onClick={() => setActiveTab('daily')}
-          style={{ 
-            padding: '1rem 1.5rem', 
-            background: 'none', 
-            border: 'none', 
-            borderBottom: activeTab === 'daily' ? '3px solid var(--primary)' : '3px solid transparent',
-            color: activeTab === 'daily' ? 'var(--primary-dark)' : 'var(--text-muted)',
-            fontWeight: activeTab === 'daily' ? 600 : 400,
-            cursor: 'pointer',
-            fontSize: '1rem'
-          }}
-        >
-          Thực đơn Ngày/Tuần
-        </button>
-        <button 
-          onClick={() => setActiveTab('suggestions')}
-          style={{ 
-            padding: '1rem 1.5rem', 
-            background: 'none', 
-            border: 'none', 
-            borderBottom: activeTab === 'suggestions' ? '3px solid var(--primary)' : '3px solid transparent',
-            color: activeTab === 'suggestions' ? 'var(--primary-dark)' : 'var(--text-muted)',
-            fontWeight: activeTab === 'suggestions' ? 600 : 400,
-            cursor: 'pointer',
-            fontSize: '1rem'
-          }}
-        >
-          Gợi ý Thực đơn <span className="badge badge-warning" style={{ marginLeft: '0.5rem', fontSize: '0.7rem' }}>Mới</span>
-        </button>
-        <button 
-          onClick={() => setActiveTab('history')}
-          style={{ 
-            padding: '1rem 1.5rem', 
-            background: 'none', 
-            border: 'none', 
-            borderBottom: activeTab === 'history' ? '3px solid var(--primary)' : '3px solid transparent',
-            color: activeTab === 'history' ? 'var(--primary-dark)' : 'var(--text-muted)',
-            fontWeight: activeTab === 'history' ? 600 : 400,
-            cursor: 'pointer',
-            fontSize: '1rem'
-          }}
-        >
-          Lịch sử Nhật ký
-        </button>
+      <div style={{ marginBottom: '2rem' }}>
+        <h2 style={{ fontSize: '1.75rem', color: 'var(--primary-dark)', marginBottom: '0.5rem' }}>Thực đơn tuần này</h2>
+        <p style={{ color: 'var(--text-muted)' }}>Chào cô Lan, hãy theo dõi thực đơn dinh dưỡng hôm nay nhé!</p>
       </div>
 
-      {/* Tab Content */}
-      <div className="animate-fade-in">
-        {activeTab === 'daily' && (
-          <div className="glass-panel">
-            <h3 style={{ marginBottom: '1.5rem' }}>Thực đơn Hôm nay (Đã được duyệt)</h3>
+      {/* Week Navigation */}
+      <div style={{ display: 'flex', gap: '0.75rem', marginBottom: '2rem', overflowX: 'auto', paddingBottom: '0.5rem' }}>
+        {[
+          { day: 'Thứ 2', date: '14', active: true },
+          { day: 'Thứ 3', date: '15', active: false },
+          { day: 'Thứ 4', date: '16', active: false },
+          { day: 'Thứ 5', date: '17', active: false },
+          { day: 'Thứ 6', date: '18', active: false },
+          { day: 'Thứ 7', date: '19', active: false },
+          { day: 'CN', date: '20', active: false },
+        ].map((item, index) => (
+          <div 
+            key={index}
+            style={{ 
+              minWidth: '70px', 
+              padding: '0.75rem 0.5rem', 
+              textAlign: 'center', 
+              background: item.active ? 'white' : 'transparent',
+              border: item.active ? '2px solid var(--primary)' : '1px solid var(--glass-border)',
+              borderRadius: 'var(--radius-md)',
+              color: item.active ? 'var(--primary-dark)' : 'var(--text-main)',
+              fontWeight: item.active ? 700 : 500,
+              cursor: 'pointer',
+              boxShadow: item.active ? 'var(--shadow-sm)' : 'none'
+            }}
+          >
+            <div style={{ fontSize: '0.85rem', marginBottom: '0.25rem' }}>{item.day}</div>
+            <div style={{ fontSize: '1.25rem' }}>{item.date}</div>
+          </div>
+        ))}
+      </div>
+
+      <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '2rem' }}>
+        
+        {/* Left Column: Meals List */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          
+          {/* Breakfast */}
+          <div className="glass-panel" style={{ padding: '1rem', display: 'flex', gap: '1rem', position: 'relative' }}>
+            <div style={{ position: 'absolute', top: '1rem', right: '1rem', fontSize: '0.95rem', fontWeight: 600, color: 'var(--text-main)' }}>07:30</div>
+            <div style={{ width: '100px', height: '100px', borderRadius: 'var(--radius-md)', background: 'url(https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&q=80&w=200) center/cover' }}></div>
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+              <div style={{ fontSize: '0.85rem', color: 'var(--primary)', fontWeight: 600, textTransform: 'uppercase', marginBottom: '0.25rem' }}>Bữa sáng</div>
+              <h4 style={{ fontSize: '1.1rem', color: 'var(--text-main)', marginBottom: '0.75rem' }}>Cháo yến mạch thịt bằm</h4>
+              <div style={{ display: 'flex', gap: '1.5rem', fontSize: '0.95rem' }}>
+                <div><span style={{ color: 'var(--text-muted)' }}>Năng lượng</span> <div style={{ fontWeight: 600, color: 'var(--text-main)' }}>320 Kcal</div></div>
+                <div><span style={{ color: 'var(--text-muted)' }}>Tinh bột</span> <div style={{ fontWeight: 600, color: 'var(--text-main)' }}>45g</div></div>
+                <div><span style={{ color: 'var(--text-muted)' }}>Đạm</span> <div style={{ fontWeight: 600, color: 'var(--text-main)' }}>12g</div></div>
+              </div>
+            </div>
+          </div>
+
+          {/* Lunch (Current) */}
+          <div className="glass-panel" style={{ padding: '1rem', display: 'flex', gap: '1rem', position: 'relative', border: '2px solid var(--primary)', background: 'var(--surface-color)' }}>
+            <div style={{ position: 'absolute', top: 0, right: 0, background: 'var(--primary)', color: 'white', padding: '0.25rem 0.75rem', borderRadius: '0 var(--radius-md) 0 var(--radius-md)', fontSize: '0.95rem', fontWeight: 600 }}>
+              Bữa hiện tại 12:00
+            </div>
+            <div style={{ width: '100px', height: '100px', borderRadius: 'var(--radius-md)', background: 'url(https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&q=80&w=200) center/cover' }}></div>
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+              <div style={{ fontSize: '0.85rem', color: 'var(--primary)', fontWeight: 600, textTransform: 'uppercase', marginBottom: '0.25rem', marginTop: '0.5rem' }}>Bữa trưa</div>
+              <h4 style={{ fontSize: '1.1rem', color: 'var(--primary-dark)', marginBottom: '0.75rem' }}>Cơm lứt + Cá lóc kho tộ + Rau luộc</h4>
+              <div style={{ display: 'flex', gap: '1.5rem', fontSize: '0.95rem' }}>
+                <div><span style={{ color: 'var(--text-muted)' }}>Năng lượng</span> <div style={{ fontWeight: 600, color: 'var(--text-main)' }}>550 Kcal</div></div>
+                <div><span style={{ color: 'var(--text-muted)' }}>Tinh bột</span> <div style={{ fontWeight: 600, color: 'var(--text-main)' }}>65g</div></div>
+                <div><span style={{ color: 'var(--text-muted)' }}>Đạm</span> <div style={{ fontWeight: 600, color: 'var(--text-main)' }}>32g</div></div>
+              </div>
+            </div>
+          </div>
+
+          {/* Snack */}
+          <div className="glass-panel" style={{ padding: '1rem', display: 'flex', gap: '1rem', alignItems: 'center' }}>
+            <div style={{ width: '60px', height: '60px', borderRadius: '50%', background: '#ffedd5', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#ea580c', fontSize: '1.5rem' }}>
+              
+            </div>
+            <div style={{ flex: 1 }}>
+              <div style={{ fontSize: '0.85rem', color: '#ea580c', fontWeight: 600, textTransform: 'uppercase', marginBottom: '0.25rem' }}>Bữa phụ</div>
+              <h4 style={{ fontSize: '1rem', color: 'var(--text-main)', margin: 0 }}>Sữa đậu nành không đường</h4>
+            </div>
+            <div style={{ textAlign: 'right' }}>
+              <div style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--text-main)' }}>15:30</div>
+              <div style={{ fontSize: '0.95rem', color: 'var(--text-muted)' }}>85 Kcal</div>
+            </div>
+          </div>
+
+          {/* Dinner */}
+          <div className="glass-panel" style={{ padding: '1rem', display: 'flex', gap: '1rem', position: 'relative', opacity: 0.7 }}>
+            <div style={{ position: 'absolute', top: '1rem', right: '1rem', fontSize: '0.95rem', fontWeight: 600, color: 'var(--text-main)' }}>18:30</div>
+            <div style={{ width: '100px', height: '100px', borderRadius: 'var(--radius-md)', background: '#f1f5f9', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '2rem', color: '#cbd5e1' }}>
+              ️
+            </div>
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+              <div style={{ fontSize: '0.85rem', color: 'var(--primary)', fontWeight: 600, textTransform: 'uppercase', marginBottom: '0.25rem' }}>Bữa tối</div>
+              <h4 style={{ fontSize: '1.1rem', color: 'var(--text-main)', marginBottom: '0.75rem' }}>Canh bí đỏ thịt bằm + 1/2 bát cơm</h4>
+              <div style={{ display: 'flex', gap: '1.5rem', fontSize: '0.95rem' }}>
+                <div><span style={{ color: 'var(--text-muted)' }}>Năng lượng</span> <div style={{ fontWeight: 600, color: 'var(--text-main)' }}>410 Kcal</div></div>
+                <div><span style={{ color: 'var(--text-muted)' }}>Tinh bột</span> <div style={{ fontWeight: 600, color: 'var(--text-main)' }}>40g</div></div>
+                <div><span style={{ color: 'var(--text-muted)' }}>Đạm</span> <div style={{ fontWeight: 600, color: 'var(--text-main)' }}>15g</div></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Right Column: Nutrition Details & Advice */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+          
+          {/* Nutrition Details */}
+          <div className="glass-panel" style={{ padding: '1.5rem' }}>
+            <h3 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.1rem', color: 'var(--primary-dark)', marginBottom: '1.5rem' }}>
+              <span></span> Chi tiết dinh dưỡng <br/><span style={{ fontSize: '1rem', color: 'var(--text-muted)', fontWeight: 400 }}>(Hôm nay)</span>
+            </h3>
             
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '1rem' }}>
-              {/* Sáng */}
-              <div style={{ padding: '1.5rem', background: 'var(--bg-color)', borderRadius: 'var(--radius-md)', border: '1px solid #d1fae5', borderLeft: '4px solid #10b981' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                  <h4 style={{ color: 'var(--text-main)', fontSize: '1.1rem' }}>Bữa Sáng (07:00)</h4>
-                  <span className="badge badge-success">Đã hoàn thành</span>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+              <div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '1rem', marginBottom: '0.5rem', fontWeight: 500 }}>
+                  <span style={{ color: 'var(--text-main)' }}>Tinh bột (Glucid)</span>
+                  <span><span style={{ color: 'var(--text-main)' }}>65g</span> <span style={{ color: 'var(--text-muted)' }}>/ 45%</span></span>
                 </div>
-                <div style={{ marginTop: '1rem', color: 'var(--text-muted)' }}>
-                  <p>• Phở xào gạo lứt (150g) + Thịt bò mềm (50g)</p>
-                  <p>• Rau xanh luộc (100g)</p>
+                <div className="progress-bar-container">
+                  <div className="progress-bar-fill" style={{ width: '45%', backgroundColor: '#b45309' }}></div>
                 </div>
               </div>
 
-              {/* Trưa */}
-              <div style={{ padding: '1.5rem', background: 'var(--bg-color)', borderRadius: 'var(--radius-md)', border: '1px solid var(--glass-border)' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                  <h4 style={{ color: 'var(--text-main)', fontSize: '1.1rem' }}>Bữa Trưa (12:00)</h4>
-                  <span className="badge badge-warning" style={{ background: '#e2e8f0', color: '#475569' }}>Sắp tới</span>
+              <div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '1rem', marginBottom: '0.5rem', fontWeight: 500 }}>
+                  <span style={{ color: 'var(--text-main)' }}>Chất đạm (Protein)</span>
+                  <span><span style={{ color: 'var(--text-main)' }}>32g</span> <span style={{ color: 'var(--text-muted)' }}>/ 30%</span></span>
                 </div>
-                <div style={{ marginTop: '1rem', color: 'var(--text-muted)' }}>
-                  <p>• Cơm gạo lứt (1 bát nhỏ - 100g)</p>
-                  <p>• Cá hồi áp chảo (100g)</p>
-                  <p>• Canh rau ngót nấu tôm (1 bát)</p>
+                <div className="progress-bar-container">
+                  <div className="progress-bar-fill" style={{ width: '30%', backgroundColor: '#b91c1c' }}></div>
                 </div>
-                <div style={{ marginTop: '1rem' }}>
-                  <button className="btn btn-outline" style={{ fontSize: '0.875rem', padding: '0.4rem 1rem' }}>Xác nhận bữa ăn</button>
+              </div>
+
+              <div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '1rem', marginBottom: '0.5rem', fontWeight: 500 }}>
+                  <span style={{ color: 'var(--text-main)' }}>Chất béo (Lipid)</span>
+                  <span><span style={{ color: 'var(--text-main)' }}>15g</span> <span style={{ color: 'var(--text-muted)' }}>/ 20%</span></span>
+                </div>
+                <div className="progress-bar-container">
+                  <div className="progress-bar-fill" style={{ width: '20%', backgroundColor: '#0284c7' }}></div>
+                </div>
+              </div>
+
+              <div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '1rem', marginBottom: '0.5rem', fontWeight: 500 }}>
+                  <span style={{ color: 'var(--text-main)' }}>Chất xơ</span>
+                  <span><span style={{ color: 'var(--text-main)' }}>12g</span> <span style={{ color: 'var(--text-muted)' }}>/ 5%</span></span>
+                </div>
+                <div className="progress-bar-container">
+                  <div className="progress-bar-fill" style={{ width: '5%', backgroundColor: '#0369a1' }}></div>
                 </div>
               </div>
             </div>
           </div>
-        )}
 
-        {activeTab === 'suggestions' && (
-          <div className="glass-panel" style={{ borderLeft: '4px solid var(--warning)' }}>
-            <h3 style={{ marginBottom: '1rem' }}>Thực đơn tuần tới (Gợi ý từ AI)</h3>
-            <p style={{ color: 'var(--text-muted)', marginBottom: '1.5rem' }}>AI đã tạo ra thực đơn mới dựa trên dữ liệu đường huyết tuần này. <strong>Đang chờ bác sĩ phê duyệt.</strong></p>
-            <div style={{ padding: '2rem', textAlign: 'center', background: 'var(--bg-color)', borderRadius: 'var(--radius-md)' }}>
-              <p style={{ color: 'var(--text-muted)' }}>Vui lòng chờ chuyên gia dinh dưỡng của bạn duyệt thực đơn này trước khi có thể áp dụng.</p>
+          {/* AI Advice */}
+          <div className="glass-panel" style={{ padding: '1.5rem', background: 'var(--primary-dark)', color: 'white', border: 'none' }}>
+            <h3 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1rem', marginBottom: '1rem' }}>
+              <span></span> Lời khuyên từ Bác sĩ Ảo
+            </h3>
+            <p style={{ fontSize: '0.95rem', lineHeight: 1.6, marginBottom: '1.5rem', opacity: 0.9 }}>
+              Cô Lan nhớ ăn kèm <strong style={{ color: '#6ee7b7' }}>nhiều rau luộc</strong> trong bữa trưa nay nhé! Chất xơ trong rau sẽ giúp cơ thể hấp thụ đường chậm hơn, rất tốt để ổn định đường huyết sau khi ăn.
+            </p>
+            <button className="btn" style={{ width: '100%', background: '#a7f3d0', color: 'var(--primary-dark)', fontWeight: 600, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
+              <span></span> Tải danh sách đi chợ
+            </button>
+          </div>
+
+          {/* Daily Progress */}
+          <div className="glass-panel" style={{ padding: '1.25rem', background: 'var(--surface-color)', border: '1px solid #e0f2fe', display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            <div style={{ fontSize: '2rem' }}></div>
+            <div>
+              <div style={{ fontSize: '0.95rem', color: 'var(--primary)', fontWeight: 600, textTransform: 'uppercase', marginBottom: '0.25rem' }}>Tiến độ hôm nay</div>
+              <div style={{ fontSize: '0.95rem', color: 'var(--primary-dark)', fontWeight: 500 }}>Cô đã hoàn thành 2/4 bữa ăn đúng giờ!</div>
             </div>
           </div>
-        )}
 
-        {activeTab === 'history' && (
-          <div className="glass-panel">
-            <h3 style={{ marginBottom: '1.5rem' }}>Lịch sử 7 ngày qua</h3>
-            <table className="data-table">
-              <thead>
-                <tr>
-                  <th>Ngày</th>
-                  <th>Mức độ tuân thủ</th>
-                  <th>Lượng Calo</th>
-                  <th>Ghi chú từ AI</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Hôm qua</td>
-                  <td><span className="badge badge-success">Tốt (95%)</span></td>
-                  <td>1750 / 1800 kcal</td>
-                  <td>Đường huyết ổn định</td>
-                </tr>
-                <tr>
-                  <td>Hôm kia</td>
-                  <td><span className="badge badge-warning">Trung bình (70%)</span></td>
-                  <td>2100 / 1800 kcal</td>
-                  <td>Vượt giới hạn tinh bột bữa tối</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        )}
+        </div>
       </div>
     </div>
   );
