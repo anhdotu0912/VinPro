@@ -126,7 +126,6 @@ export default function UnifiedPortal() {
                     style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '0.5rem', border: '1px solid #cbd5e1', outline: 'none', fontSize: '0.95rem', appearance: 'none', backgroundColor: 'white' }}
                   >
                     <option value="Patient">Patient</option>
-                    <option value="Nutritionist">Nutritionist</option>
                     <option value="Doctor">Doctor</option>
                   </select>
                   <span style={{ position: 'absolute', right: '1rem', top: '50%', transform: 'translateY(-50%)', color: '#94a3b8', pointerEvents: 'none' }}>

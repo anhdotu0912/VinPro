@@ -6,7 +6,7 @@ export default function PatientDashboard() {
     <div>
       <header style={{ marginBottom: '2rem' }}>
         <h2>Xin chào, <span className="text-gradient">Nguyễn Văn A</span></h2>
-        <p style={{ color: 'var(--text-muted)' }}>Mục tiêu dinh dưỡng: Đái tháo đường Type 2</p>
+        <p style={{ color: 'var(--text-muted)' }}>Mục tiêu dinh dưỡng: Tiểu đường Type 2</p>
       </header>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem', marginBottom: '2rem' }}>
@@ -44,24 +44,53 @@ export default function PatientDashboard() {
             <Link href="/patient/menus" style={{ fontSize: '0.875rem', color: 'var(--primary)', fontWeight: 500 }}>Xem chi tiết</Link>
           </div>
           
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', flex: 1 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', flex: 1, maxHeight: '500px', overflowY: 'auto', paddingRight: '0.5rem' }} className="custom-scrollbar">
             <div style={{ padding: '1rem', borderRadius: 'var(--radius-md)', background: 'var(--bg-color)', borderLeft: '4px solid var(--success)' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
                 <h4 style={{ fontSize: '1rem' }}>Bữa Sáng</h4>
                 <span className="badge badge-success" style={{ fontSize: '0.85rem' }}>Hoàn thành</span>
               </div>
-              <p style={{ fontSize: '1rem', color: 'var(--text-muted)' }}>Phở xào gạo lứt (150g), Thịt bò mềm (50g)</p>
+              <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)' }}>Rau mồng tơi, bắp cải luộc, 1 quả cà chua, 1/3 quả bơ, 2 bát cháo cá lóc.</p>
+            </div>
+
+            <div style={{ padding: '1rem', borderRadius: 'var(--radius-md)', background: 'var(--bg-color)', borderLeft: '4px solid var(--success)' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
+                <h4 style={{ fontSize: '1rem' }}>Bữa phụ sáng</h4>
+                <span className="badge badge-success" style={{ fontSize: '0.85rem' }}>Hoàn thành</span>
+              </div>
+              <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)' }}>Sữa tươi ko đường.</p>
             </div>
 
             <div style={{ padding: '1rem', borderRadius: 'var(--radius-md)', background: 'var(--bg-color)', borderLeft: '4px solid var(--warning)' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-                <h4 style={{ fontSize: '1rem' }}>Bữa Trưa (12:00)</h4>
+                <h4 style={{ fontSize: '1rem' }}>Bữa Trưa</h4>
                 <span className="badge badge-warning" style={{ fontSize: '0.85rem' }}>Sắp tới</span>
               </div>
-              <p style={{ fontSize: '1rem', color: 'var(--text-muted)' }}>Cơm gạo lứt (100g), Cá hồi áp chảo, Canh rau ngót.</p>
-              <div style={{ marginTop: '1rem', textAlign: 'right' }}>
+              <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)' }}>1/2 đĩa rau luộc, 2 quả trứng luộc, Cá kho, nửa bát cơm gạo lứt.</p>
+              <div style={{ marginTop: '0.75rem', textAlign: 'right' }}>
                 <Link href="/patient/log-meal" className="btn btn-outline" style={{ padding: '0.4rem 1rem', fontSize: '0.875rem' }}>Log Bữa ăn</Link>
               </div>
+            </div>
+
+            <div style={{ padding: '1rem', borderRadius: 'var(--radius-md)', background: 'var(--bg-color)', borderLeft: '4px solid var(--glass-border)' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
+                <h4 style={{ fontSize: '1rem' }}>Bữa phụ chiều</h4>
+              </div>
+              <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)' }}>Sữa chua ko đường.</p>
+            </div>
+
+            <div style={{ padding: '1rem', borderRadius: 'var(--radius-md)', background: 'var(--bg-color)', borderLeft: '4px solid var(--glass-border)' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
+                <h4 style={{ fontSize: '1rem' }}>Bữa Tối</h4>
+              </div>
+              <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)' }}>Cà tím luộc, Canh sườn non rau ngót, Thịt ba chỉ rim, 1/2 chén cơm gạo lứt.</p>
+            </div>
+
+            <div style={{ padding: '1rem', borderRadius: 'var(--radius-md)', background: 'var(--bg-color)', borderLeft: '4px solid var(--glass-border)' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
+                <h4 style={{ fontSize: '1rem' }}>Bữa phụ tối</h4>
+              </div>
+              <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)' }}>1/2 quả lựu.</p>
             </div>
           </div>
         </div>

@@ -8,7 +8,7 @@ export default function OnboardingPage() {
   return (
     <div className="patient-auth-container" style={{ padding: '3rem 2rem', alignItems: 'flex-start' }}>
       <div style={{ maxWidth: '1100px', width: '100%', margin: '0 auto', padding: '0 1rem' }}>
-        
+
         {/* Header */}
         <header style={{ marginBottom: '2rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '2rem' }}>
@@ -25,33 +25,29 @@ export default function OnboardingPage() {
               <span style={{ cursor: 'pointer', fontWeight: 600 }}>Tài khoản</span>
             </div>
           </div>
-          
+
           <h2 style={{ fontSize: '1.75rem', color: 'var(--primary-dark)', margin: '0 0 2rem 0', fontWeight: 600 }}>
             {step === 1 && 'Chào mừng bạn! Hãy cho Trợ lý AI biết về sức khỏe của bạn.'}
             {step === 2 && 'Thông tin sức khỏe'}
             {step === 3 && 'Kết nối thiết bị & Hoàn tất'}
           </h2>
-          
+
           <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '1rem', fontWeight: 600, color: 'var(--primary-dark)', marginBottom: '0.75rem' }}>
             <span>
               {step === 1 && 'Bước 1/3: Thông tin cơ bản'}
               {step === 2 && 'Bước 2/3: Chỉ số lâm sàng'}
               {step === 3 && 'Bước 3/3: Kết nối'}
             </span>
-            <span style={{ color: 'var(--text-muted)', fontWeight: 500 }}>
-              {step === 1 && '33%'}
-              {step === 2 && '66%'}
-              {step === 3 && '100%'}
-            </span>
+
           </div>
-          
+
           <div className="progress-bar-container" style={{ height: '6px', background: 'var(--primary-light)' }}>
             <div className="progress-bar-fill progress-bar-primary" style={{ width: step === 1 ? '33%' : step === 2 ? '66%' : '100%' }}></div>
           </div>
         </header>
 
         <div style={{ display: 'grid', gridTemplateColumns: '1.8fr 1fr', gap: '2.5rem' }}>
-          
+
           {/* Main Form Area */}
           <div>
             {step === 1 && (
@@ -95,13 +91,13 @@ export default function OnboardingPage() {
                   <h3 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.1rem', marginBottom: '1.5rem', color: 'var(--primary-dark)' }}>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path><path d="M12 9v6"></path><path d="M9 12h6"></path></svg> Tình trạng sức khỏe
                   </h3>
-                  
+
                   <div style={{ marginBottom: '1.5rem' }}>
                     <label className="form-label" style={{ color: 'var(--text-muted)' }}>Bệnh lý đang mắc</label>
                     <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-                      <span className="pill" style={{ background: 'var(--primary)', color: 'white', borderColor: 'var(--primary)' }}>Tiểu đường Type 2</span>
-                      <span className="pill" style={{ color: 'var(--text-muted)' }}>Tim mạch</span>
-                      <span className="pill" style={{ color: 'var(--text-muted)' }}>Gout</span>
+                      <span className="pill" style={{ background: 'var(--primary)', color: 'white', borderColor: 'var(--primary)' }}>Tiểu đường Type 1</span>
+                      <span className="pill" style={{ color: 'var(--text-muted)' }}>Tiểu đường Type 2</span>
+                      <span className="pill" style={{ color: 'var(--text-muted)' }}>Tiểu đường thai kỳ</span>
                     </div>
                   </div>
 
@@ -111,23 +107,25 @@ export default function OnboardingPage() {
                       <input type="text" className="form-input" placeholder="Nhập tên thuốc, ví dụ: Metformin..." />
                       <button className="btn" style={{ background: 'var(--primary-light)', color: 'var(--primary-dark)', fontWeight: 600, border: 'none', borderRadius: 'var(--radius-md)', padding: '0 1.5rem', whiteSpace: 'nowrap' }}>+ Thêm thuốc</button>
                     </div>
-                    <div style={{ background: 'var(--primary-light)', color: 'var(--primary-dark)', padding: '0.75rem 1rem', borderRadius: 'var(--radius-sm)', marginTop: '0.75rem', fontSize: '0.95rem', display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
-                      <span style={{ color: 'var(--primary)', fontWeight: 'bold' }}>i</span> AI sẽ phân tích các tương tác giữa Thuốc và Thực phẩm để đảm bảo an toàn cho bạn.
-                    </div>
                   </div>
 
                   <div>
                     <label className="form-label" style={{ color: 'var(--text-muted)' }}>Dị ứng thực phẩm</label>
                     <input type="text" className="form-input" placeholder="Ví dụ: Hải sản, Đậu phộng, Sữa..." />
                   </div>
+
+                  <div style={{ background: 'var(--primary-light)', color: 'var(--primary-dark)', padding: '0.75rem 1rem', borderRadius: 'var(--radius-sm)', marginTop: '1.5rem', fontSize: '0.95rem', display: 'flex', gap: '0.5rem', alignItems: 'flex-start' }}>
+                    <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '1.25rem', height: '1.25rem', borderRadius: '50%', border: '1.5px solid var(--primary)', color: 'var(--primary)', fontWeight: 700, fontSize: '0.85rem', flexShrink: 0, marginTop: '0.1rem' }}>i</span>
+                    <div>AI sẽ phân tích các tương tác giữa Thuốc và Thực phẩm để đảm bảo an toàn cho bạn.</div>
+                  </div>
                 </div>
 
-                <button 
-                  onClick={() => setStep(2)} 
-                  className="btn" 
+                <button
+                  onClick={() => setStep(2)}
+                  className="btn"
                   style={{ width: '100%', padding: '1rem', fontSize: '1rem', borderRadius: 'var(--radius-md)', background: 'var(--primary-dark)', color: 'white', fontWeight: 600, marginTop: '1rem' }}
                 >
-                  HOÀN THÀNH & TẠO THỰC ĐƠN →
+                  TIẾP TỤC BƯỚC 2 →
                 </button>
                 <div style={{ textAlign: 'center', marginTop: '0.5rem', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
                   Dữ liệu sức khỏe của bạn được bảo mật tuyệt đối bởi mã hóa AES-256.
@@ -142,14 +140,14 @@ export default function OnboardingPage() {
                   <h3 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.1rem', marginBottom: '1.5rem', color: 'var(--primary-dark)' }}>
                     Chỉ số lâm sàng gần đây
                   </h3>
-                  
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', marginBottom: '1.5rem' }}>
+
+                  <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '1.5rem', marginBottom: '1.5rem' }}>
                     <div>
                       <label className="form-label" style={{ color: 'var(--text-muted)' }}>Huyết áp (mmHg)</label>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                        <input type="number" className="form-input" placeholder="Tâm thu" />
+                        <input type="number" className="form-input" placeholder="Tâm thu" style={{ minWidth: '120px' }} />
                         <span style={{ color: 'var(--text-muted)' }}>/</span>
-                        <input type="number" className="form-input" placeholder="Tâm trương" />
+                        <input type="number" className="form-input" placeholder="Tâm trương" style={{ minWidth: '120px' }} />
                       </div>
                     </div>
                     <div>
@@ -175,7 +173,7 @@ export default function OnboardingPage() {
                   <h3 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.1rem', marginBottom: '1.5rem', color: 'var(--primary-dark)' }}>
                     Mục tiêu sức khỏe
                   </h3>
-                  
+
                   <div style={{ marginBottom: '1.5rem' }}>
                     <label className="form-label" style={{ color: 'var(--text-muted)' }}>Lựa chọn ưu tiên</label>
                     <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
@@ -218,7 +216,7 @@ export default function OnboardingPage() {
                   <div style={{ background: 'var(--surface-color)', border: '1px solid var(--glass-border)', borderRadius: 'var(--radius-lg)', padding: '2rem', boxShadow: 'var(--shadow-sm)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between', marginBottom: '1.5rem' }}>
                       <span style={{ color: '#ef4444' }}>
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" /></svg>
                       </span>
                       <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', background: '#f1f5f9', padding: '0.25rem 0.75rem', borderRadius: '9999px', fontWeight: 500 }}>Chưa kết nối</span>
                     </div>
@@ -230,7 +228,7 @@ export default function OnboardingPage() {
                   <div style={{ background: 'var(--surface-color)', border: '1px solid var(--glass-border)', borderRadius: 'var(--radius-lg)', padding: '2rem', boxShadow: 'var(--shadow-sm)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between', marginBottom: '1.5rem' }}>
                       <span style={{ color: '#3b82f6' }}>
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M13 14v6a1 1 0 0 1-1 1H8v-7H5l7-7 7 7h-3v7h-4v-6h-2z"/></svg>
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M13 14v6a1 1 0 0 1-1 1H8v-7H5l7-7 7 7h-3v7h-4v-6h-2z" /></svg>
                       </span>
                       <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', background: '#f1f5f9', padding: '0.25rem 0.75rem', borderRadius: '9999px', fontWeight: 500 }}>Chưa kết nối</span>
                     </div>
@@ -254,7 +252,7 @@ export default function OnboardingPage() {
                   <div style={{ background: 'var(--surface-color)', border: '1px solid var(--glass-border)', borderRadius: 'var(--radius-lg)', padding: '2rem', boxShadow: 'var(--shadow-sm)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between', marginBottom: '1.5rem' }}>
                       <span style={{ color: '#059669' }}>
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 22h20L12 2zm0 4.5l6.5 13h-13L12 6.5z"/></svg>
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 22h20L12 2zm0 4.5l6.5 13h-13L12 6.5z" /></svg>
                       </span>
                       <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', background: '#f1f5f9', padding: '0.25rem 0.75rem', borderRadius: '9999px', fontWeight: 500 }}>Chưa kết nối</span>
                     </div>
@@ -267,13 +265,13 @@ export default function OnboardingPage() {
                 <div style={{ background: 'var(--surface-color)', padding: '1.5rem', borderRadius: 'var(--radius-md)', display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
                   <input type="checkbox" style={{ marginTop: '0.35rem', width: '1.4rem', height: '1.4rem' }} />
                   <p style={{ fontSize: '1.05rem', color: 'var(--text-muted)', margin: 0, lineHeight: 1.6 }}>
-                    Tôi xác nhận đã đọc và đồng ý với <Link href="#" style={{ color: 'var(--primary)', fontWeight: 700, textDecoration: 'underline' }}>Chính sách bảo mật dữ liệu</Link>. 
+                    Tôi xác nhận đã đọc và đồng ý với <Link href="#" style={{ color: 'var(--primary)', fontWeight: 700, textDecoration: 'underline' }}>Chính sách bảo mật dữ liệu</Link>.
                     Tôi hiểu rằng AI chỉ hỗ trợ tư vấn và không thay thế hoàn toàn chỉ định chuyên môn từ bác sĩ điều trị.
                   </p>
                 </div>
 
                 <Link href="/patient" className="btn btn-primary" style={{ width: '100%', padding: '1.5rem', fontSize: '1.35rem', borderRadius: 'var(--radius-lg)', fontWeight: 700, marginTop: '1rem' }}>
-                  BẮT ĐẦU TRẢI NGHIỆM →
+                  HOÀN THÀNH & TẠO THỰC ĐƠN →
                 </Link>
               </div>
             )}
@@ -281,7 +279,7 @@ export default function OnboardingPage() {
 
           {/* Right Sidebar */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            
+
             {(step === 1 || step === 2) && (
               <>
                 <div style={{ background: 'var(--surface-color)', borderRadius: 'var(--radius-lg)', padding: '1.5rem', border: '1px solid var(--glass-border)' }}>
@@ -290,19 +288,19 @@ export default function OnboardingPage() {
                     {step === 1 ? 'Tại sao cần thông tin này?' : 'Tại sao cần chỉ số này?'}
                   </h4>
                   <p style={{ fontSize: '1rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>
-                    {step === 1 
-                      ? 'Thông tin của bạn giúp AI tính toán chỉ số BMI và nhu cầu dinh dưỡng chính xác nhất, đặc biệt là khi bạn có các bệnh lý nền như Tiểu đường.' 
+                    {step === 1
+                      ? 'Thông tin của bạn giúp AI tính toán chỉ số BMI và nhu cầu dinh dưỡng chính xác nhất, đặc biệt là khi bạn có các bệnh lý nền như Tiểu đường.'
                       : 'AI Guardian sử dụng các chỉ số này để tính toán nhu cầu dinh dưỡng chính xác và đưa ra thực đơn cá nhân hóa an toàn, đặc biệt nếu bạn đang có các vấn đề về huyết áp hoặc đường huyết.'}
                   </p>
                 </div>
-                
+
                 <div style={{ background: 'var(--primary-dark)', borderRadius: 'var(--radius-lg)', padding: '1.5rem', color: 'white', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)' }}>
                   <h4 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem', fontSize: '1rem', fontWeight: 600 }}>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"></rect><circle cx="12" cy="5" r="2"></circle><path d="M12 7v4"></path><line x1="8" y1="16" x2="8.01" y2="16"></line><line x1="16" y1="16" x2="16.01" y2="16"></line></svg> Mẹo từ AI Guardian
                   </h4>
                   <p style={{ fontSize: '1rem', lineHeight: 1.6, opacity: 0.9 }}>
-                    {step === 1 
-                      ? 'Đừng quên ghi rõ liều lượng thuốc để tôi có thể gợi ý giờ ăn tối ưu cho việc hấp thu thuốc của bạn nhé!' 
+                    {step === 1
+                      ? 'Đừng quên ghi rõ liều lượng thuốc để tôi có thể gợi ý giờ ăn tối ưu cho việc hấp thu thuốc của bạn nhé!'
                       : 'Để có kết số huyết áp chính xác nhất, hãy nghỉ ngơi tĩnh lặng trong 5 phút trước khi đo và giữ bắp tay ngang tầm với tim của bạn.'}
                   </p>
                 </div>

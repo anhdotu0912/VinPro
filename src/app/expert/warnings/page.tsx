@@ -30,7 +30,7 @@ export default function WarningsPage() {
             <tr style={{ borderBottom: '1px solid #e2e8f0', color: 'var(--text-muted)' }}>
               <th style={{ padding: '1.25rem 1.5rem', fontSize: '0.95rem', fontWeight: 600 }}>TÊN BỆNH NHÂN</th>
               <th style={{ padding: '1.25rem 1.5rem', fontSize: '0.95rem', fontWeight: 600 }}>BỆNH LÝ</th>
-              <th style={{ padding: '1.25rem 1.5rem', fontSize: '0.95rem', fontWeight: 600 }}>TUÂN THỦ (7 NGÀY)</th>
+              <th style={{ padding: '1.25rem 1.5rem', fontSize: '0.95rem', fontWeight: 600, width: '20%', minWidth: '200px' }}>TUÂN THỦ (7 NGÀY)</th>
               <th style={{ padding: '1.25rem 1.5rem', fontSize: '0.95rem', fontWeight: 600 }}>VẤN ĐỀ (AI PHÁT HIỆN)</th>
               <th style={{ padding: '1.25rem 1.5rem', fontSize: '0.95rem', fontWeight: 600 }}>HÀNH ĐỘNG</th>
             </tr>
@@ -50,15 +50,15 @@ export default function WarningsPage() {
               </td>
               <td style={{ padding: '1.5rem' }}>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                  <span style={{ fontSize: '0.7rem', fontWeight: 600, color: '#1e40af', background: '#dbeafe', padding: '0.3rem 0.6rem', borderRadius: '4px' }}>ĐTĐ Type 2</span>
+                  <span style={{ fontSize: '0.7rem', fontWeight: 600, color: '#1e40af', background: '#dbeafe', padding: '0.3rem 0.6rem', borderRadius: '4px' }}>Tiểu đường tuýp 2</span>
                 </div>
               </td>
               <td style={{ padding: '1.5rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                   <div style={{ flex: 1, height: '6px', background: '#f1f5f9', borderRadius: '3px', overflow: 'hidden' }}>
-                    <div style={{ width: '60%', height: '100%', background: '#b45309' }}></div>
+                    <div style={{ width: '50%', height: '100%', background: '#ea580c' }}></div>
                   </div>
-                  <span style={{ fontSize: '0.95rem', fontWeight: 600, color: '#b45309', minWidth: '70px' }}>Trung bình</span>
+                  <span style={{ fontSize: '0.95rem', fontWeight: 600, color: '#ea580c', minWidth: '80px', whiteSpace: 'nowrap' }}>Trung bình</span>
                 </div>
               </td>
               <td style={{ padding: '1.5rem', width: '35%' }}>
@@ -88,16 +88,15 @@ export default function WarningsPage() {
               </td>
               <td style={{ padding: '1.5rem' }}>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                  <span style={{ fontSize: '0.7rem', fontWeight: 600, color: '#1e40af', background: '#dbeafe', padding: '0.3rem 0.6rem', borderRadius: '4px' }}>Tim mạch</span>
-                  <span style={{ fontSize: '0.7rem', fontWeight: 600, color: '#4338ca', background: '#e0e7ff', padding: '0.3rem 0.6rem', borderRadius: '4px' }}>Gout</span>
+                  <span style={{ fontSize: '0.7rem', fontWeight: 600, color: '#1e40af', background: '#dbeafe', padding: '0.3rem 0.6rem', borderRadius: '4px' }}>Tiểu đường tuýp 1</span>
                 </div>
               </td>
               <td style={{ padding: '1.5rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                   <div style={{ flex: 1, height: '6px', background: '#f1f5f9', borderRadius: '3px', overflow: 'hidden' }}>
-                    <div style={{ width: '25%', height: '100%', background: '#dc2626' }}></div>
+                    <div style={{ width: '30%', height: '100%', background: '#dc2626' }}></div>
                   </div>
-                  <span style={{ fontSize: '0.95rem', fontWeight: 600, color: '#dc2626', minWidth: '70px' }}>Tệ</span>
+                  <span style={{ fontSize: '0.95rem', fontWeight: 600, color: '#dc2626', minWidth: '80px', whiteSpace: 'nowrap' }}>Tệ</span>
                 </div>
               </td>
               <td style={{ padding: '1.5rem', width: '35%' }}>
@@ -127,15 +126,15 @@ export default function WarningsPage() {
               </td>
               <td style={{ padding: '1.5rem' }}>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                  <span style={{ fontSize: '0.7rem', fontWeight: 600, color: '#1e40af', background: '#dbeafe', padding: '0.3rem 0.6rem', borderRadius: '4px' }}>ĐTĐ Type 2</span>
+                  <span style={{ fontSize: '0.7rem', fontWeight: 600, color: '#1e40af', background: '#dbeafe', padding: '0.3rem 0.6rem', borderRadius: '4px' }}>Tiểu đường thai kì</span>
                 </div>
               </td>
               <td style={{ padding: '1.5rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                   <div style={{ flex: 1, height: '6px', background: '#f1f5f9', borderRadius: '3px', overflow: 'hidden' }}>
-                    <div style={{ width: '90%', height: '100%', background: 'var(--primary)' }}></div>
+                    <div style={{ width: '100%', height: '100%', background: 'var(--primary)' }}></div>
                   </div>
-                  <span style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--success)', minWidth: '70px' }}>Tốt</span>
+                  <span style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--primary)', minWidth: '80px', whiteSpace: 'nowrap' }}>Tốt</span>
                 </div>
               </td>
               <td style={{ padding: '1.5rem', width: '35%' }}>

@@ -1,11 +1,49 @@
-import type { Metadata } from 'next';
+"use client";
+import { useState } from "react";
 import Link from 'next/link';
 
-export const metadata: Metadata = {
-  title: 'Thực đơn cần duyệt - NutriMed AI',
+
+
+const MENUS_DATA: Record<string, any[]> = {
+  'Thứ 2': [
+    { type: 'Bữa Sáng', title: 'Cháo gạo lứt thịt bằm', time: '07:30 AM', kcal: 320, G: 45, P: 15, L: 8, desc: '1 bát vừa (250ml), thêm 10g gừng sợi.', img: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&q=80&w=300' },
+    { type: 'Bữa Phụ Sáng', title: 'Sữa tươi không đường', time: '09:30 AM', kcal: 120, G: 10, P: 8, L: 4, desc: '1 hộp (180ml)', img: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?auto=format&fit=crop&q=80&w=300' },
+    { type: 'Bữa Trưa', title: 'Cơm gạo lứt & Cá chẽm hấp', time: '12:00 PM', kcal: 580, G: 60, P: 40, L: 15, desc: '100g cơm, 150g cá chẽm, 200g rau xanh luộc.', img: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&q=80&w=300' },
+    { type: 'Bữa Phụ Chiều', title: 'Sữa chua Hy Lạp & Dâu tây', time: '03:30 PM', kcal: 150, G: 12, P: 8, L: 5, desc: '1 hộp sữa chua không đường, 5 quả dâu.', img: 'https://images.unsplash.com/photo-1525203135335-74d272fc8d9c?auto=format&fit=crop&q=80&w=300' },
+    { type: 'Bữa Tối', title: 'Canh sườn non rau ngót, Thịt ba chỉ rim', time: '06:30 PM', kcal: 410, G: 40, P: 15, L: 12, desc: '1/2 chén cơm gạo lứt, 100g sườn non, 50g thịt.', img: 'https://images.unsplash.com/photo-1511690656952-34342bb7c2f2?auto=format&fit=crop&q=80&w=300' },
+    { type: 'Bữa Phụ Tối', title: 'Nửa quả lựu', time: '08:30 PM', kcal: 50, G: 10, P: 1, L: 0, desc: '1/2 quả lựu vừa.', img: 'https://images.unsplash.com/photo-1615486171448-4ffd3e6ab816?auto=format&fit=crop&q=80&w=300' },
+  ],
+  'Thứ 3': [
+    { type: 'Bữa Sáng', title: 'Phở bò ức, ít bánh phở', time: '07:30 AM', kcal: 350, G: 40, P: 25, L: 10, desc: '1 bát phở nhỏ, 100g ức bò, nhiều hành lá.', img: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&q=80&w=300' },
+    { type: 'Bữa Phụ Sáng', title: 'Bánh mì đen', time: '09:30 AM', kcal: 140, G: 25, P: 4, L: 2, desc: '2 lát bánh mì đen.', img: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=300' },
+    { type: 'Bữa Trưa', title: 'Cơm gạo lứt & Thịt gà xé', time: '12:00 PM', kcal: 520, G: 55, P: 35, L: 12, desc: '100g cơm, 150g ức gà, 200g rau xà lách.', img: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&q=80&w=300' },
+    { type: 'Bữa Phụ Chiều', title: 'Trà sen vàng ít đường', time: '03:30 PM', kcal: 120, G: 20, P: 2, L: 1, desc: '1 ly trà sen ít ngọt.', img: 'https://images.unsplash.com/photo-1558160074-4d7d8bdf4256?auto=format&fit=crop&q=80&w=300' },
+    { type: 'Bữa Tối', title: 'Cá hồi áp chảo & Măng tây', time: '06:30 PM', kcal: 450, G: 20, P: 35, L: 25, desc: '150g cá hồi, 100g măng tây nướng.', img: 'https://images.unsplash.com/photo-1525203135335-74d272fc8d9c?auto=format&fit=crop&q=80&w=300' },
+    { type: 'Bữa Phụ Tối', title: 'Bánh mì đen', time: '08:30 PM', kcal: 70, G: 12, P: 2, L: 1, desc: '1 lát bánh mì đen.', img: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=300' },
+  ],
+  'Thứ 4': [
+    { type: 'Bữa Sáng', title: 'Bánh mì đen & Trứng ốp la', time: '07:30 AM', kcal: 300, G: 35, P: 18, L: 10, desc: '2 lát bánh mì đen, 2 quả trứng.', img: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&q=80&w=300' },
+    { type: 'Bữa Phụ Sáng', title: 'Đu đủ chín', time: '09:30 AM', kcal: 60, G: 15, P: 1, L: 0, desc: '1/4 quả đu đủ.', img: 'https://images.unsplash.com/photo-1615486171448-4ffd3e6ab816?auto=format&fit=crop&q=80&w=300' },
+    { type: 'Bữa Trưa', title: 'Salad Tôm & Bơ', time: '12:30 PM', kcal: 450, G: 20, P: 25, L: 30, desc: '150g tôm luộc, 1/2 quả bơ, rau xanh trộn.', img: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&q=80&w=300' },
+    { type: 'Bữa Phụ Chiều', title: 'Sữa chua không đường', time: '03:30 PM', kcal: 85, G: 12, P: 5, L: 2, desc: '1 hộp.', img: 'https://images.unsplash.com/photo-1525203135335-74d272fc8d9c?auto=format&fit=crop&q=80&w=300' },
+    { type: 'Bữa Tối', title: 'Thịt nướng & Đậu bắp nướng', time: '06:30 PM', kcal: 480, G: 35, P: 30, L: 15, desc: '150g thịt nướng, 100g đậu bắp.', img: 'https://images.unsplash.com/photo-1511690656952-34342bb7c2f2?auto=format&fit=crop&q=80&w=300' },
+    { type: 'Bữa Phụ Tối', title: 'Táo tàu', time: '08:30 PM', kcal: 40, G: 10, P: 0, L: 0, desc: '1 quả nhỏ.', img: 'https://images.unsplash.com/photo-1615486171448-4ffd3e6ab816?auto=format&fit=crop&q=80&w=300' },
+  ],
+  'Thứ 5': [
+    { type: 'Bữa Sáng', title: 'Ngũ cốc yến mạch & Sữa tươi', time: '08:00 AM', kcal: 380, G: 50, P: 12, L: 8, desc: '50g yến mạch, 200ml sữa tươi không đường.', img: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&q=80&w=300' },
+    { type: 'Bữa Phụ Sáng', title: 'Táo xanh', time: '09:30 AM', kcal: 95, G: 25, P: 0, L: 0, desc: '1 quả táo xanh.', img: 'https://images.unsplash.com/photo-1615486171448-4ffd3e6ab816?auto=format&fit=crop&q=80&w=300' },
+    { type: 'Bữa Trưa', title: 'Bún gạo lứt & Bò xào', time: '12:00 PM', kcal: 550, G: 65, P: 30, L: 18, desc: '1 bát bún gạo lứt nhỏ, 150g bò xào cần tây.', img: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&q=80&w=300' },
+    { type: 'Bữa Phụ Chiều', title: 'Trái cóc', time: '03:30 PM', kcal: 40, G: 10, P: 0, L: 0, desc: '1 quả cóc tươi.', img: 'https://images.unsplash.com/photo-1615486171448-4ffd3e6ab816?auto=format&fit=crop&q=80&w=300' },
+    { type: 'Bữa Tối', title: 'Canh rong biển & Tôm', time: '07:00 PM', kcal: 300, G: 20, P: 25, L: 10, desc: '1 bát canh rong biển, 100g tôm lột vỏ.', img: 'https://images.unsplash.com/photo-1525203135335-74d272fc8d9c?auto=format&fit=crop&q=80&w=300' },
+    { type: 'Bữa Phụ Tối', title: 'Sữa đậu nành', time: '08:30 PM', kcal: 180, G: 25, P: 8, L: 5, desc: '1 hộp sữa đậu nành ít đường.', img: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?auto=format&fit=crop&q=80&w=300' },
+  ]
 };
 
 export default function MenusApprovalPage() {
+  const [activeDay, setActiveDay] = useState('Thứ 2');
+  const [showInsight, setShowInsight] = useState(false);
+  const days = ['Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5'];
+
   return (
     <div style={{ display: 'grid', gridTemplateColumns: '350px 1fr', gap: '2rem', height: 'calc(100vh - 120px)' }}>
       
@@ -85,7 +123,7 @@ export default function MenusApprovalPage() {
             <div style={{ width: '50px', height: '50px', borderRadius: '50%', background: 'url(https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150) center/cover' }}></div>
             <div>
               <div style={{ fontWeight: 600, fontSize: '1.1rem', color: 'var(--text-main)' }}>Nguyễn Văn An</div>
-              <div style={{ fontSize: '0.95rem', color: 'var(--text-muted)' }}>BN-2023-4412 • Nam • 62 tuổi • Đái tháo đường Type 2</div>
+              <div style={{ fontSize: '0.95rem', color: 'var(--text-muted)' }}>BN-2023-4412 • Nam • 62 tuổi • Tiểu đường Type 2</div>
             </div>
           </div>
           <div style={{ display: 'flex', gap: '1rem' }}>
@@ -112,7 +150,24 @@ export default function MenusApprovalPage() {
           </div>
 
           {/* Nutrition Ratio */}
-          <div className="glass-panel" style={{ padding: '1.5rem', border: '1px solid #e2e8f0' }}>
+          <div 
+            className="glass-panel" 
+            style={{ padding: '1.5rem', border: '1px solid #e2e8f0', position: 'relative' }}
+            onMouseEnter={() => setShowInsight(true)}
+            onMouseLeave={() => setShowInsight(false)}
+          >
+            {/* NutriMed AI Insight Popup */}
+            {showInsight && (
+              <div style={{ position: 'absolute', top: '100%', left: '50%', transform: 'translateX(-50%)', marginTop: '1rem', width: '320px', background: 'white', borderRadius: 'var(--radius-lg)', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.2)', padding: '1.5rem', border: '1px solid #e2e8f0', zIndex: 50 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem', color: 'var(--primary-dark)', fontWeight: 600, fontSize: '0.95rem' }}>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg>
+                  NutriMed AI Insight
+                </div>
+                <p style={{ fontSize: '1rem', color: 'var(--text-muted)', lineHeight: 1.5, margin: 0, fontStyle: 'italic' }}>
+                  "Bệnh nhân có chỉ số đường huyết sau ăn lúc 20:00 ngày hôm qua đạt 9.2 mmol/L. Tôi đã tự động điều chỉnh giảm 15g Glucid cho bữa tối tiếp theo."
+                </p>
+              </div>
+            )}
             <div style={{ fontSize: '0.95rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '1rem' }}>TỶ LỆ DINH DƯỠNG (P:L:C) 20% : 25% : 55%</div>
             
             <div style={{ display: 'flex', height: '12px', borderRadius: '6px', overflow: 'hidden', marginBottom: '1.5rem' }}>
@@ -141,89 +196,57 @@ export default function MenusApprovalPage() {
           </div>
         </div>
 
+        
         {/* Meals List */}
         <div>
+          <div style={{ display: 'flex', gap: '1rem', marginBottom: '1.5rem', borderBottom: '1px solid #e2e8f0' }}>
+            {days.map(day => (
+              <div 
+                key={day}
+                onClick={() => setActiveDay(day)}
+                style={{ 
+                  padding: '0.75rem 1rem', 
+                  cursor: 'pointer', 
+                  fontWeight: activeDay === day ? 600 : 500,
+                  color: activeDay === day ? 'var(--primary-dark)' : 'var(--text-muted)',
+                  borderBottom: activeDay === day ? '2px solid var(--primary)' : '2px solid transparent',
+                  transition: 'all 0.2s'
+                }}
+              >
+                {day}
+              </div>
+            ))}
+          </div>
+
           <h3 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.1rem', color: 'var(--primary-dark)', marginBottom: '1.5rem' }}>
-            <span></span> Chi tiết Thực đơn Thứ Hai
+            <span></span> Chi tiết Thực đơn {activeDay}
           </h3>
           
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-            {/* Breakfast */}
-            <div className="glass-panel" style={{ padding: '1.25rem', border: '1px solid #e2e8f0', display: 'flex', gap: '1.5rem' }}>
-              <div style={{ width: '120px', height: '100px', borderRadius: 'var(--radius-md)', background: 'url(https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&q=80&w=300) center/cover', position: 'relative' }}>
-                <div style={{ position: 'absolute', bottom: '0.5rem', left: '0.5rem', background: 'rgba(255,255,255,0.9)', padding: '0.1rem 0.4rem', borderRadius: '4px', fontSize: '0.7rem', fontWeight: 600, color: 'var(--primary-dark)' }}>07:30 AM</div>
-              </div>
-              <div style={{ flex: 1 }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.5rem' }}>
-                  <h4 style={{ fontSize: '1.1rem', margin: 0, color: 'var(--text-main)' }}>Bữa Sáng: Cháo gạo lứt thịt bằm</h4>
-                  <div style={{ fontWeight: 600, color: 'var(--primary)' }}>320 kcal</div>
+            {MENUS_DATA[activeDay].map((meal, index) => (
+              <div key={index} className="glass-panel" style={{ padding: '1.25rem', border: '1px solid #e2e8f0', display: 'flex', gap: '1.5rem' }}>
+                <div style={{ width: '120px', height: '100px', borderRadius: 'var(--radius-md)', background: `url(${meal.img}) center/cover`, position: 'relative' }}>
+                  <div style={{ position: 'absolute', bottom: '0.5rem', left: '0.5rem', background: 'rgba(255,255,255,0.9)', padding: '0.1rem 0.4rem', borderRadius: '4px', fontSize: '0.7rem', fontWeight: 600, color: 'var(--primary-dark)' }}>{meal.time}</div>
                 </div>
-                <div style={{ fontSize: '0.95rem', color: 'var(--text-muted)', marginBottom: '0.5rem' }}>
-                  1 bát vừa (250ml), thêm 10g gừng sợi.
-                </div>
-                <div style={{ display: 'flex', gap: '1rem', fontSize: '0.95rem', color: 'var(--text-muted)', fontWeight: 500 }}>
-                  <span>G: <span style={{ color: 'var(--text-main)' }}>45g</span></span>
-                  <span>P: <span style={{ color: 'var(--text-main)' }}>15g</span></span>
-                  <span>L: <span style={{ color: 'var(--text-main)' }}>8g</span></span>
-                </div>
-              </div>
-            </div>
-
-            {/* Lunch */}
-            <div className="glass-panel" style={{ padding: '1.25rem', border: '1px solid #e2e8f0', display: 'flex', gap: '1.5rem' }}>
-              <div style={{ width: '120px', height: '100px', borderRadius: 'var(--radius-md)', background: 'url(https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&q=80&w=300) center/cover', position: 'relative' }}>
-                <div style={{ position: 'absolute', bottom: '0.5rem', left: '0.5rem', background: 'rgba(255,255,255,0.9)', padding: '0.1rem 0.4rem', borderRadius: '4px', fontSize: '0.7rem', fontWeight: 600, color: 'var(--primary-dark)' }}>12:00 PM</div>
-              </div>
-              <div style={{ flex: 1 }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.5rem' }}>
-                  <h4 style={{ fontSize: '1.1rem', margin: 0, color: 'var(--text-main)' }}>Bữa Trưa: Cơm gạo lứt & Cá chẽm hấp</h4>
-                  <div style={{ fontWeight: 600, color: 'var(--primary)' }}>580 kcal</div>
-                </div>
-                <div style={{ fontSize: '0.95rem', color: 'var(--text-muted)', marginBottom: '0.5rem' }}>
-                  100g cơm, 150g cá chẽm, 200g rau xanh luộc.
-                </div>
-                <div style={{ display: 'flex', gap: '1rem', fontSize: '0.95rem', color: 'var(--text-muted)', fontWeight: 500 }}>
-                  <span>G: <span style={{ color: 'var(--text-main)' }}>60g</span></span>
-                  <span>P: <span style={{ color: 'var(--text-main)' }}>40g</span></span>
-                  <span>L: <span style={{ color: 'var(--text-main)' }}>15g</span></span>
+                <div style={{ flex: 1 }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.5rem' }}>
+                    <h4 style={{ fontSize: '1.1rem', margin: 0, color: 'var(--text-main)' }}>{meal.type}: {meal.title}</h4>
+                    <div style={{ fontWeight: 600, color: 'var(--primary)' }}>{meal.kcal} kcal</div>
+                  </div>
+                  <div style={{ fontSize: '0.95rem', color: 'var(--text-muted)', marginBottom: '0.5rem' }}>
+                    {meal.desc}
+                  </div>
+                  <div style={{ display: 'flex', gap: '1rem', fontSize: '0.95rem', color: 'var(--text-muted)', fontWeight: 500 }}>
+                    <span>G: <span style={{ color: 'var(--text-main)' }}>{meal.G}g</span></span>
+                    <span>P: <span style={{ color: 'var(--text-main)' }}>{meal.P}g</span></span>
+                    <span>L: <span style={{ color: 'var(--text-main)' }}>{meal.L}g</span></span>
+                  </div>
                 </div>
               </div>
-            </div>
-
-            {/* Snack */}
-            <div className="glass-panel" style={{ padding: '1.25rem', border: '1px solid #e2e8f0', display: 'flex', gap: '1.5rem' }}>
-              <div style={{ width: '120px', height: '100px', borderRadius: 'var(--radius-md)', background: 'url(https://images.unsplash.com/photo-1525203135335-74d272fc8d9c?auto=format&fit=crop&q=80&w=300) center/cover', position: 'relative' }}>
-                <div style={{ position: 'absolute', bottom: '0.5rem', left: '0.5rem', background: 'rgba(255,255,255,0.9)', padding: '0.1rem 0.4rem', borderRadius: '4px', fontSize: '0.7rem', fontWeight: 600, color: 'var(--primary-dark)' }}>03:30 PM</div>
-              </div>
-              <div style={{ flex: 1 }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.5rem' }}>
-                  <h4 style={{ fontSize: '1.1rem', margin: 0, color: 'var(--text-main)' }}>Bữa Phụ: Sữa chua Hy Lạp & Dâu tây</h4>
-                  <div style={{ fontWeight: 600, color: 'var(--primary)' }}>150 kcal</div>
-                </div>
-                <div style={{ fontSize: '0.95rem', color: 'var(--text-muted)', marginBottom: '0.5rem' }}>
-                  1 hộp sữa chua không đường, 5 quả dâu.
-                </div>
-                <div style={{ display: 'flex', gap: '1rem', fontSize: '0.95rem', color: 'var(--text-muted)', fontWeight: 500 }}>
-                  <span>G: <span style={{ color: 'var(--text-main)' }}>12g</span></span>
-                  <span>P: <span style={{ color: 'var(--text-main)' }}>8g</span></span>
-                  <span>L: <span style={{ color: 'var(--text-main)' }}>5g</span></span>
-                </div>
-              </div>
-            </div>
-
+            ))}
           </div>
         </div>
-        
-        {/* NutriMed AI Insight Popup (Positioned over Lunch realistically, but fixed here for demo) */}
-        <div style={{ position: 'absolute', bottom: '80px', right: '40px', width: '320px', background: 'white', borderRadius: 'var(--radius-lg)', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.2)', padding: '1.5rem', border: '1px solid #e2e8f0', zIndex: 10 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem', color: 'var(--primary-dark)', fontWeight: 600, fontSize: '0.95rem' }}>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg>
-            NutriMed AI Insight
-          </div>
-          <p style={{ fontSize: '1rem', color: 'var(--text-muted)', lineHeight: 1.5, margin: 0, fontStyle: 'italic' }}>
-            "Bệnh nhân có chỉ số đường huyết sau ăn lúc 20:00 ngày hôm qua đạt 9.2 mmol/L. Tôi đã tự động điều chỉnh giảm 15g Glucid cho bữa tối tiếp theo."
-          </p>
-        </div>
+
 
       </div>
     </div>

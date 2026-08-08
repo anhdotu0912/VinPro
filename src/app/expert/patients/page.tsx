@@ -63,7 +63,7 @@ export default function PatientsList() {
               <th style={{ padding: '1.25rem 1.5rem', fontSize: '0.95rem', fontWeight: 600 }}>Bệnh nhân</th>
               <th style={{ padding: '1.25rem 1.5rem', fontSize: '0.95rem', fontWeight: 600 }}>Mã ID</th>
               <th style={{ padding: '1.25rem 1.5rem', fontSize: '0.95rem', fontWeight: 600 }}>Bệnh lý</th>
-              <th style={{ padding: '1.25rem 1.5rem', fontSize: '0.95rem', fontWeight: 600 }}>Chỉ số tuân thủ</th>
+              <th style={{ padding: '1.25rem 1.5rem', fontSize: '0.95rem', fontWeight: 600, width: '20%', minWidth: '200px' }}>Chỉ số tuân thủ</th>
               <th style={{ padding: '1.25rem 1.5rem', fontSize: '0.95rem', fontWeight: 600 }}>Trạng thái</th>
               <th style={{ padding: '1.25rem 1.5rem', fontSize: '0.95rem', fontWeight: 600 }}>Hành động</th>
             </tr>
@@ -84,8 +84,7 @@ export default function PatientsList() {
               <td style={{ padding: '1rem 1.5rem', fontSize: '0.95rem', color: 'var(--text-main)' }}>BN-2024-001</td>
               <td style={{ padding: '1rem 1.5rem' }}>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                  <span style={{ fontSize: '0.7rem', fontWeight: 600, color: '#0369a1', background: '#e0f2fe', padding: '0.2rem 0.5rem', borderRadius: '4px' }}>ĐTĐ TYPE 2</span>
-                  <span style={{ fontSize: '0.7rem', fontWeight: 600, color: '#9a3412', background: '#ffedd5', padding: '0.2rem 0.5rem', borderRadius: '4px' }}>CAO HUYẾT ÁP</span>
+                  <span style={{ fontSize: '0.7rem', fontWeight: 600, color: '#0369a1', background: '#e0f2fe', padding: '0.2rem 0.5rem', borderRadius: '4px' }}>TIỂU ĐƯỜNG TUÝP 2</span>
                 </div>
               </td>
               <td style={{ padding: '1rem 1.5rem' }}>
@@ -123,7 +122,7 @@ export default function PatientsList() {
               <td style={{ padding: '1rem 1.5rem', fontSize: '0.95rem', color: 'var(--text-main)' }}>BN-2024-042</td>
               <td style={{ padding: '1rem 1.5rem' }}>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                  <span style={{ fontSize: '0.7rem', fontWeight: 600, color: '#4338ca', background: '#e0e7ff', padding: '0.2rem 0.5rem', borderRadius: '4px' }}>SUY THẬN MẠN</span>
+                  <span style={{ fontSize: '0.7rem', fontWeight: 600, color: '#4338ca', background: '#e0e7ff', padding: '0.2rem 0.5rem', borderRadius: '4px' }}>TIỂU ĐƯỜNG TUÝP 1</span>
                 </div>
               </td>
               <td style={{ padding: '1rem 1.5rem' }}>
@@ -161,8 +160,7 @@ export default function PatientsList() {
               <td style={{ padding: '1rem 1.5rem', fontSize: '0.95rem', color: 'var(--text-main)' }}>BN-2024-089</td>
               <td style={{ padding: '1rem 1.5rem' }}>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                  <span style={{ fontSize: '0.7rem', fontWeight: 600, color: '#be123c', background: '#ffe4e6', padding: '0.2rem 0.5rem', borderRadius: '4px' }}>BÉO PHÌ</span>
-                  <span style={{ fontSize: '0.7rem', fontWeight: 600, color: '#4338ca', background: '#e0e7ff', padding: '0.2rem 0.5rem', borderRadius: '4px' }}>RỐI LOẠN LIPID</span>
+                  <span style={{ fontSize: '0.7rem', fontWeight: 600, color: '#be123c', background: '#ffe4e6', padding: '0.2rem 0.5rem', borderRadius: '4px' }}>TIỂU ĐƯỜNG THAI KÌ</span>
                 </div>
               </td>
               <td style={{ padding: '1rem 1.5rem' }}>
